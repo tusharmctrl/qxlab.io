@@ -1,24 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface MetaMetadata extends Struct.ComponentSchema {
-  collectionName: 'components_meta_metadata';
-  info: {
-    name: 'Metadata';
-    displayName: 'Metadata';
-    icon: 'robot';
-  };
-  attributes: {
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
-    twitterCardType: Schema.Attribute.Enumeration<
-      ['summary', 'summary_large_image', 'app', 'player']
-    > &
-      Schema.Attribute.DefaultTo<'summary'>;
-    twitterUsername: Schema.Attribute.String;
-  };
-}
-
 export interface SectionsTestimonialsGroup extends Struct.ComponentSchema {
   collectionName: 'components_slices_testimonials_groups';
   info: {
@@ -145,6 +126,25 @@ export interface SectionsBottomActions extends Struct.ComponentSchema {
   };
 }
 
+export interface MetaMetadata extends Struct.ComponentSchema {
+  collectionName: 'components_meta_metadata';
+  info: {
+    name: 'Metadata';
+    displayName: 'Metadata';
+    icon: 'robot';
+  };
+  attributes: {
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    shareImage: Schema.Attribute.Media<'images'>;
+    twitterCardType: Schema.Attribute.Enumeration<
+      ['summary', 'summary_large_image', 'app', 'player']
+    > &
+      Schema.Attribute.DefaultTo<'summary'>;
+    twitterUsername: Schema.Attribute.String;
+  };
+}
+
 export interface LinksLink extends Struct.ComponentSchema {
   collectionName: 'components_links_links';
   info: {
@@ -262,7 +262,8 @@ export interface ElementsNotificationBanner extends Struct.ComponentSchema {
   };
   attributes: {
     text: Schema.Attribute.RichText;
-    type: Schema.Attribute.Enumeration<['alert', 'info', 'warning']> & Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<['alert', 'info', 'warning']> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -315,7 +316,8 @@ export interface ElementsFeatureRow extends Struct.ComponentSchema {
   attributes: {
     title: Schema.Attribute.String & Schema.Attribute.Required;
     description: Schema.Attribute.Text;
-    media: Schema.Attribute.Media<'images' | 'videos'> & Schema.Attribute.Required;
+    media: Schema.Attribute.Media<'images' | 'videos'> &
+      Schema.Attribute.Required;
     link: Schema.Attribute.Component<'links.link', false>;
   };
 }
@@ -338,7 +340,6 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'meta.metadata': MetaMetadata;
       'sections.testimonials-group': SectionsTestimonialsGroup;
       'sections.rich-text': SectionsRichText;
       'sections.pricing': SectionsPricing;
@@ -348,6 +349,7 @@ declare module '@strapi/strapi' {
       'sections.feature-rows-group': SectionsFeatureRowsGroup;
       'sections.feature-columns-group': SectionsFeatureColumnsGroup;
       'sections.bottom-actions': SectionsBottomActions;
+      'meta.metadata': MetaMetadata;
       'links.link': LinksLink;
       'links.button': LinksButton;
       'links.button-link': LinksButtonLink;

@@ -1,5 +1,5 @@
 {
-  "name": "cms",
+  "name": "strapi-cms",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -15,8 +15,8 @@
     "@strapi/plugin-graphql": "^5.0.0",
     "@strapi/plugin-users-permissions": "5.0.5",
     "@strapi/strapi": "5.0.5",
+    "better-sqlite3": "11.3.0",
     "lodash": "^4.17.19",
-    "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -29,6 +29,6 @@
   },
   "strapi": {
     "template": "website",
-    "uuid": "d1fe8d00-6880-426a-affb-edb7ec00ae63"
+    "uuid": "89260b63-e756-4af5-8965-4f96948165ef"
   }
 }
