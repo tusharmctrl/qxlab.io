@@ -1,0 +1,8 @@
+query GlobalData {
+  global {
+    documentId
+    favicon {
+      url
+    }
+  }
+}
