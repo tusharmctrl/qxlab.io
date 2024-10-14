@@ -4,5 +4,25 @@ query GlobalData {
     favicon {
       url
     }
+    metadata {
+      id
+      metaTitle
+      metaDescription
+    }
+    navbar {
+      id
+      links {
+        id
+        newTab
+        text
+        url
+        sublinks {
+          id
+          newTab
+          text
+          url
+        }
+      }
+    }
   }
 }

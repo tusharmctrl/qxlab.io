@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/styles/loader.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
@@ -6,6 +7,7 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
 import UrqlProvider from "@/urql/provider";
 import { Suspense } from "react";
+import PageLoader from "@/components/comman/PageLoader";
 import { Header } from "@/components/comman/Header";
 
 const description =
@@ -14,7 +16,7 @@ const description =
 export const metadata: Metadata = {
   title: "QxLab.io",
   description: description,
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/favicon.ico" }]
 };
 
 export type LayoutProps = Readonly<{ children: React.ReactNode }>;
@@ -25,7 +27,10 @@ export default function RootLayout({ children }: LayoutProps) {
       <body>
         <TRPCReactProvider>
           <UrqlProvider>
-            <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
+            <Suspense fallback={<PageLoader />}>
+              <Header />
+              {children}
+            </Suspense>
           </UrqlProvider>
         </TRPCReactProvider>
       </body>

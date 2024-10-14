@@ -1,24 +1,11 @@
 import gql from "graphql-tag";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T,
-> = { [_ in K]?: never };
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never;
-    };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string };
@@ -72,14 +59,10 @@ export type ComponentElementsFeatureColumn = {
 };
 
 export type ComponentElementsFeatureColumnFiltersInput = {
-  and?: InputMaybe<
-    Array<InputMaybe<ComponentElementsFeatureColumnFiltersInput>>
-  >;
+  and?: InputMaybe<Array<InputMaybe<ComponentElementsFeatureColumnFiltersInput>>>;
   description?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ComponentElementsFeatureColumnFiltersInput>;
-  or?: InputMaybe<
-    Array<InputMaybe<ComponentElementsFeatureColumnFiltersInput>>
-  >;
+  or?: InputMaybe<Array<InputMaybe<ComponentElementsFeatureColumnFiltersInput>>>;
   title?: InputMaybe<StringFilterInput>;
 };
 
@@ -122,14 +105,10 @@ export type ComponentElementsFooterSectionLinksArgs = {
 };
 
 export type ComponentElementsFooterSectionFiltersInput = {
-  and?: InputMaybe<
-    Array<InputMaybe<ComponentElementsFooterSectionFiltersInput>>
-  >;
+  and?: InputMaybe<Array<InputMaybe<ComponentElementsFooterSectionFiltersInput>>>;
   links?: InputMaybe<ComponentLinksLinkFiltersInput>;
   not?: InputMaybe<ComponentElementsFooterSectionFiltersInput>;
-  or?: InputMaybe<
-    Array<InputMaybe<ComponentElementsFooterSectionFiltersInput>>
-  >;
+  or?: InputMaybe<Array<InputMaybe<ComponentElementsFooterSectionFiltersInput>>>;
   title?: InputMaybe<StringFilterInput>;
 };
 
@@ -296,8 +275,15 @@ export type ComponentLinksLink = {
   __typename?: "ComponentLinksLink";
   id: Scalars["ID"]["output"];
   newTab?: Maybe<Scalars["Boolean"]["output"]>;
+  sublinks?: Maybe<Array<Maybe<ComponentLinksSublinks>>>;
   text: Scalars["String"]["output"];
   url: Scalars["String"]["output"];
+};
+
+export type ComponentLinksLinkSublinksArgs = {
+  filters?: InputMaybe<ComponentLinksSublinksFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
 
 export type ComponentLinksLinkFiltersInput = {
@@ -305,11 +291,37 @@ export type ComponentLinksLinkFiltersInput = {
   newTab?: InputMaybe<BooleanFilterInput>;
   not?: InputMaybe<ComponentLinksLinkFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentLinksLinkFiltersInput>>>;
+  sublinks?: InputMaybe<ComponentLinksSublinksFiltersInput>;
   text?: InputMaybe<StringFilterInput>;
   url?: InputMaybe<StringFilterInput>;
 };
 
 export type ComponentLinksLinkInput = {
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  newTab?: InputMaybe<Scalars["Boolean"]["input"]>;
+  sublinks?: InputMaybe<Array<InputMaybe<ComponentLinksSublinksInput>>>;
+  text?: InputMaybe<Scalars["String"]["input"]>;
+  url?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ComponentLinksSublinks = {
+  __typename?: "ComponentLinksSublinks";
+  id: Scalars["ID"]["output"];
+  newTab?: Maybe<Scalars["Boolean"]["output"]>;
+  text?: Maybe<Scalars["String"]["output"]>;
+  url?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type ComponentLinksSublinksFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentLinksSublinksFiltersInput>>>;
+  newTab?: InputMaybe<BooleanFilterInput>;
+  not?: InputMaybe<ComponentLinksSublinksFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentLinksSublinksFiltersInput>>>;
+  text?: InputMaybe<StringFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentLinksSublinksInput = {
   id?: InputMaybe<Scalars["ID"]["input"]>;
   newTab?: InputMaybe<Scalars["Boolean"]["input"]>;
   text?: InputMaybe<Scalars["String"]["input"]>;
@@ -491,30 +503,30 @@ export type DeleteMutationResponse = {
 export enum Enum_Componentelementsnotificationbanner_Type {
   Alert = "alert",
   Info = "info",
-  Warning = "warning",
+  Warning = "warning"
 }
 
 export enum Enum_Componentlinksbuttonlink_Type {
   Primary = "primary",
-  Secondary = "secondary",
+  Secondary = "secondary"
 }
 
 export enum Enum_Componentlinksbutton_Type {
   Primary = "primary",
-  Secondary = "secondary",
+  Secondary = "secondary"
 }
 
 export enum Enum_Componentmetametadata_Twittercardtype {
   App = "app",
   Player = "player",
   Summary = "summary",
-  SummaryLargeImage = "summary_large_image",
+  SummaryLargeImage = "summary_large_image"
 }
 
 export enum Enum_Leadformsubmission_Status {
   Contacted = "contacted",
   Ignored = "ignored",
-  Seen = "seen",
+  Seen = "seen"
 }
 
 export type Error = {
@@ -568,6 +580,7 @@ export type GenericMorph =
   | ComponentLinksButton
   | ComponentLinksButtonLink
   | ComponentLinksLink
+  | ComponentLinksSublinks
   | ComponentMetaMetadata
   | ComponentSectionsBottomActions
   | ComponentSectionsFeatureColumnsGroup
@@ -1046,9 +1059,7 @@ export type PageFiltersInput = {
 };
 
 export type PageInput = {
-  contentSections?: InputMaybe<
-    Array<Scalars["PageContentSectionsDynamicZoneInput"]["input"]>
-  >;
+  contentSections?: InputMaybe<Array<Scalars["PageContentSectionsDynamicZoneInput"]["input"]>>;
   metadata?: InputMaybe<ComponentMetaMetadataInput>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   shortName?: InputMaybe<Scalars["String"]["input"]>;
@@ -1077,7 +1088,7 @@ export type PaginationArg = {
 
 export enum PublicationStatus {
   Draft = "DRAFT",
-  Published = "PUBLISHED",
+  Published = "PUBLISHED"
 }
 
 export type Query = {
@@ -1781,8 +1792,22 @@ export type GlobalDataQueryVariables = Exact<{ [key: string]: never }>;
 export type GlobalDataQuery = { __typename?: "Query" } & {
   global?: Maybe<
     { __typename?: "Global" } & Pick<Global, "documentId"> & {
-        favicon?: Maybe<
-          { __typename?: "UploadFile" } & Pick<UploadFile, "url">
+        favicon?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url">>;
+        metadata?: Maybe<{ __typename?: "ComponentMetaMetadata" } & Pick<ComponentMetaMetadata, "id" | "metaTitle" | "metaDescription">>;
+        navbar?: Maybe<
+          { __typename?: "ComponentLayoutNavbar" } & Pick<ComponentLayoutNavbar, "id"> & {
+              links?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: "ComponentLinksLink" } & Pick<ComponentLinksLink, "id" | "newTab" | "text" | "url"> & {
+                        sublinks?: Maybe<
+                          Array<Maybe<{ __typename?: "ComponentLinksSublinks" } & Pick<ComponentLinksSublinks, "id" | "newTab" | "text" | "url">>>
+                        >;
+                      }
+                  >
+                >
+              >;
+            }
         >;
       }
   >;
@@ -1795,6 +1820,26 @@ export const GlobalData = gql`
       favicon {
         url
       }
+      metadata {
+        id
+        metaTitle
+        metaDescription
+      }
+      navbar {
+        id
+        links {
+          id
+          newTab
+          text
+          url
+          sublinks {
+            id
+            newTab
+            text
+            url
+          }
+        }
+      }
     }
   }
 `;
@@ -1802,10 +1847,10 @@ import { IntrospectionQuery } from "graphql";
 export default {
   __schema: {
     queryType: {
-      name: "Query",
+      name: "Query"
     },
     mutationType: {
-      name: "Mutation",
+      name: "Mutation"
     },
     subscriptionType: null,
     types: [
@@ -1819,21 +1864,21 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "name",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -1843,9 +1888,9 @@ export default {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "icon",
@@ -1854,10 +1899,10 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UploadFile",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -1865,10 +1910,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "title",
@@ -1876,13 +1921,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -1892,9 +1937,9 @@ export default {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -1902,19 +1947,19 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "link",
             type: {
               kind: "OBJECT",
               name: "ComponentLinksLink",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "media",
@@ -1923,10 +1968,10 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UploadFile",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "title",
@@ -1934,13 +1979,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -1952,10 +1997,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "links",
@@ -1964,23 +2009,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentLinksLink",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -1988,22 +2033,22 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2015,30 +2060,30 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "logo",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2050,18 +2095,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "text",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "type",
@@ -2069,13 +2114,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2085,9 +2130,9 @@ export default {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "features",
@@ -2096,23 +2141,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentElementsFeature",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -2120,11 +2165,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "id",
@@ -2132,45 +2177,45 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "isRecommended",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "name",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "price",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "pricePeriod",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2180,17 +2225,17 @@ export default {
             name: "authorName",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "authorTitle",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -2198,47 +2243,47 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "link",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "logo",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "picture",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "text",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2251,23 +2296,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentElementsFooterSection",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -2275,11 +2320,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "id",
@@ -2287,30 +2332,30 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "logo",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "smallText",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2321,9 +2366,9 @@ export default {
             type: {
               kind: "OBJECT",
               name: "ComponentLinksButtonLink",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -2331,10 +2376,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "links",
@@ -2343,23 +2388,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentLinksLink",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -2367,11 +2412,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "logo",
@@ -2380,13 +2425,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UploadFile",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2398,29 +2443,29 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "text",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "type",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2432,45 +2477,45 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "newTab",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "text",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "type",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "url",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2482,18 +2527,55 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "newTab",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
+          },
+          {
+            name: "sublinks",
+            type: {
+              kind: "LIST",
+              ofType: {
+                kind: "OBJECT",
+                name: "ComponentLinksSublinks",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "filters",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "pagination",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "sort",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "text",
@@ -2501,10 +2583,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "url",
@@ -2512,13 +2594,55 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "ComponentLinksSublinks",
+        fields: [
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "newTab",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "text",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "url",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2530,10 +2654,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "metaDescription",
@@ -2541,10 +2665,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "metaTitle",
@@ -2552,38 +2676,38 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "shareImage",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "twitterCardType",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "twitterUsername",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2596,23 +2720,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentLinksButtonLink",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -2620,11 +2744,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "id",
@@ -2632,21 +2756,21 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2659,23 +2783,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentElementsFeatureColumn",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -2683,11 +2807,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "id",
@@ -2695,13 +2819,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2714,23 +2838,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentElementsFeatureRow",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -2738,11 +2862,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "id",
@@ -2750,13 +2874,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2769,23 +2893,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentLinksButtonLink",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -2793,19 +2917,19 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -2813,46 +2937,46 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "label",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "picture",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "smallTextWithLink",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2862,9 +2986,9 @@ export default {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -2872,27 +2996,27 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "poster",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "video",
@@ -2901,13 +3025,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UploadFile",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2917,9 +3041,9 @@ export default {
             name: "emailPlaceholder",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -2927,38 +3051,38 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "location",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "submitButton",
             type: {
               kind: "OBJECT",
               name: "ComponentLinksButton",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -2970,10 +3094,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "plans",
@@ -2982,23 +3106,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentElementsPlan",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -3006,22 +3130,22 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3031,9 +3155,9 @@ export default {
             name: "content",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -3041,13 +3165,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3057,9 +3181,9 @@ export default {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -3067,19 +3191,19 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "link",
             type: {
               kind: "OBJECT",
               name: "ComponentLinksLink",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "logos",
@@ -3088,23 +3212,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentElementsLogos",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -3112,11 +3236,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "testimonials",
@@ -3125,23 +3249,23 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentElementsTestimonial",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -3149,22 +3273,22 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "title",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3176,13 +3300,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3194,21 +3318,21 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "message",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "UNION",
@@ -3216,137 +3340,141 @@ export default {
         possibleTypes: [
           {
             kind: "OBJECT",
-            name: "ComponentElementsFeature",
+            name: "ComponentElementsFeature"
           },
           {
             kind: "OBJECT",
-            name: "ComponentElementsFeatureColumn",
+            name: "ComponentElementsFeatureColumn"
           },
           {
             kind: "OBJECT",
-            name: "ComponentElementsFeatureRow",
+            name: "ComponentElementsFeatureRow"
           },
           {
             kind: "OBJECT",
-            name: "ComponentElementsFooterSection",
+            name: "ComponentElementsFooterSection"
           },
           {
             kind: "OBJECT",
-            name: "ComponentElementsLogos",
+            name: "ComponentElementsLogos"
           },
           {
             kind: "OBJECT",
-            name: "ComponentElementsNotificationBanner",
+            name: "ComponentElementsNotificationBanner"
           },
           {
             kind: "OBJECT",
-            name: "ComponentElementsPlan",
+            name: "ComponentElementsPlan"
           },
           {
             kind: "OBJECT",
-            name: "ComponentElementsTestimonial",
+            name: "ComponentElementsTestimonial"
           },
           {
             kind: "OBJECT",
-            name: "ComponentLayoutFooter",
+            name: "ComponentLayoutFooter"
           },
           {
             kind: "OBJECT",
-            name: "ComponentLayoutNavbar",
+            name: "ComponentLayoutNavbar"
           },
           {
             kind: "OBJECT",
-            name: "ComponentLinksButton",
+            name: "ComponentLinksButton"
           },
           {
             kind: "OBJECT",
-            name: "ComponentLinksButtonLink",
+            name: "ComponentLinksButtonLink"
           },
           {
             kind: "OBJECT",
-            name: "ComponentLinksLink",
+            name: "ComponentLinksLink"
           },
           {
             kind: "OBJECT",
-            name: "ComponentMetaMetadata",
+            name: "ComponentLinksSublinks"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsBottomActions",
+            name: "ComponentMetaMetadata"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsFeatureColumnsGroup",
+            name: "ComponentSectionsBottomActions"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsFeatureRowsGroup",
+            name: "ComponentSectionsFeatureColumnsGroup"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsHero",
+            name: "ComponentSectionsFeatureRowsGroup"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsLargeVideo",
+            name: "ComponentSectionsHero"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsLeadForm",
+            name: "ComponentSectionsLargeVideo"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsPricing",
+            name: "ComponentSectionsLeadForm"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsRichText",
+            name: "ComponentSectionsPricing"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsTestimonialsGroup",
+            name: "ComponentSectionsRichText"
           },
           {
             kind: "OBJECT",
-            name: "Global",
+            name: "ComponentSectionsTestimonialsGroup"
           },
           {
             kind: "OBJECT",
-            name: "I18NLocale",
+            name: "Global"
           },
           {
             kind: "OBJECT",
-            name: "LeadFormSubmission",
+            name: "I18NLocale"
           },
           {
             kind: "OBJECT",
-            name: "Page",
+            name: "LeadFormSubmission"
           },
           {
             kind: "OBJECT",
-            name: "ReviewWorkflowsWorkflow",
+            name: "Page"
           },
           {
             kind: "OBJECT",
-            name: "ReviewWorkflowsWorkflowStage",
+            name: "ReviewWorkflowsWorkflow"
           },
           {
             kind: "OBJECT",
-            name: "UploadFile",
+            name: "ReviewWorkflowsWorkflowStage"
           },
           {
             kind: "OBJECT",
-            name: "UsersPermissionsPermission",
+            name: "UploadFile"
           },
           {
             kind: "OBJECT",
-            name: "UsersPermissionsRole",
+            name: "UsersPermissionsPermission"
           },
           {
             kind: "OBJECT",
-            name: "UsersPermissionsUser",
+            name: "UsersPermissionsRole"
           },
-        ],
+          {
+            kind: "OBJECT",
+            name: "UsersPermissionsUser"
+          }
+        ]
       },
       {
         kind: "OBJECT",
@@ -3356,9 +3484,9 @@ export default {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -3366,36 +3494,36 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "favicon",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "footer",
             type: {
               kind: "OBJECT",
               name: "ComponentLayoutFooter",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -3406,20 +3534,20 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "Global",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "GlobalRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "metaTitleSuffix",
@@ -3427,56 +3555,56 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "metadata",
             type: {
               kind: "OBJECT",
               name: "ComponentMetaMetadata",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "navbar",
             type: {
               kind: "OBJECT",
               name: "ComponentLayoutNavbar",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "notificationBanner",
             type: {
               kind: "OBJECT",
               name: "ComponentElementsNotificationBanner",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3493,15 +3621,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "Global",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3511,17 +3639,17 @@ export default {
             name: "code",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -3529,18 +3657,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -3551,24 +3679,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "I18NLocale",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -3576,33 +3704,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "I18NLocaleRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -3610,38 +3738,38 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "name",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3658,12 +3786,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "I18NLocale",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -3672,13 +3800,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3695,15 +3823,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "I18NLocale",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3713,9 +3841,9 @@ export default {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -3723,26 +3851,26 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "email",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -3753,24 +3881,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "LeadFormSubmission",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -3778,33 +3906,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "LeadFormSubmissionRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -3812,46 +3940,46 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "location",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "status",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3868,12 +3996,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "LeadFormSubmission",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -3882,13 +4010,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3905,15 +4033,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "LeadFormSubmission",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -3924,7 +4052,7 @@ export default {
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsLoginPayload",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -3933,9 +4061,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "password",
@@ -3943,9 +4071,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "passwordConfirmation",
@@ -3953,18 +4081,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "createLeadFormSubmission",
             type: {
               kind: "OBJECT",
               name: "LeadFormSubmission",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -3973,25 +4101,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "createPage",
             type: {
               kind: "OBJECT",
               name: "Page",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4000,32 +4128,32 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "createReviewWorkflowsWorkflow",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflow",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4034,25 +4162,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "createReviewWorkflowsWorkflowStage",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowStage",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4061,25 +4189,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "createUsersPermissionsRole",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsCreateRolePayload",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4088,11 +4216,11 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "createUsersPermissionsUser",
@@ -4101,8 +4229,8 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UsersPermissionsUserEntityResponse",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
@@ -4111,35 +4239,35 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "deleteGlobal",
             type: {
               kind: "OBJECT",
               name: "DeleteMutationResponse",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "deleteLeadFormSubmission",
             type: {
               kind: "OBJECT",
               name: "DeleteMutationResponse",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4148,18 +4276,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "deletePage",
             type: {
               kind: "OBJECT",
               name: "DeleteMutationResponse",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4168,25 +4296,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "deleteReviewWorkflowsWorkflow",
             type: {
               kind: "OBJECT",
               name: "DeleteMutationResponse",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4195,18 +4323,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "deleteReviewWorkflowsWorkflowStage",
             type: {
               kind: "OBJECT",
               name: "DeleteMutationResponse",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4215,18 +4343,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "deleteUploadFile",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4235,18 +4363,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "deleteUsersPermissionsRole",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsDeleteRolePayload",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4255,11 +4383,11 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "deleteUsersPermissionsUser",
@@ -4268,8 +4396,8 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UsersPermissionsUserEntityResponse",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
@@ -4278,18 +4406,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "emailConfirmation",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsLoginPayload",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4298,18 +4426,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "forgotPassword",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsPasswordPayload",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4318,11 +4446,11 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "login",
@@ -4331,8 +4459,8 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UsersPermissionsLoginPayload",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
@@ -4341,11 +4469,11 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "register",
@@ -4354,8 +4482,8 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UsersPermissionsLoginPayload",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
@@ -4364,18 +4492,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "resetPassword",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsLoginPayload",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4384,9 +4512,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "password",
@@ -4394,9 +4522,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "passwordConfirmation",
@@ -4404,18 +4532,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "updateGlobal",
             type: {
               kind: "OBJECT",
               name: "Global",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4424,32 +4552,32 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "updateLeadFormSubmission",
             type: {
               kind: "OBJECT",
               name: "LeadFormSubmission",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4458,9 +4586,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "documentId",
@@ -4468,25 +4596,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "updatePage",
             type: {
               kind: "OBJECT",
               name: "Page",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4495,9 +4623,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "documentId",
@@ -4505,32 +4633,32 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "updateReviewWorkflowsWorkflow",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflow",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4539,9 +4667,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "documentId",
@@ -4549,25 +4677,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "updateReviewWorkflowsWorkflowStage",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowStage",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4576,9 +4704,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "documentId",
@@ -4586,18 +4714,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "updateUploadFile",
@@ -4606,8 +4734,8 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UploadFile",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
@@ -4616,25 +4744,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "info",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "updateUsersPermissionsRole",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsUpdateRolePayload",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -4643,9 +4771,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "id",
@@ -4653,11 +4781,11 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "updateUsersPermissionsUser",
@@ -4666,8 +4794,8 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UsersPermissionsUserEntityResponse",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
             args: [
               {
@@ -4676,9 +4804,9 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "id",
@@ -4686,14 +4814,14 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
-          },
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -4706,18 +4834,18 @@ export default {
               ofType: {
                 kind: "UNION",
                 name: "PageContentSectionsDynamicZone",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -4725,18 +4853,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -4747,24 +4875,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "Page",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -4772,33 +4900,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "PageRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -4806,11 +4934,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "metadata",
@@ -4819,45 +4947,45 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "ComponentMetaMetadata",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "shortName",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "slug",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "UNION",
@@ -4865,45 +4993,45 @@ export default {
         possibleTypes: [
           {
             kind: "OBJECT",
-            name: "ComponentSectionsBottomActions",
+            name: "ComponentSectionsBottomActions"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsFeatureColumnsGroup",
+            name: "ComponentSectionsFeatureColumnsGroup"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsFeatureRowsGroup",
+            name: "ComponentSectionsFeatureRowsGroup"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsHero",
+            name: "ComponentSectionsHero"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsLargeVideo",
+            name: "ComponentSectionsLargeVideo"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsLeadForm",
+            name: "ComponentSectionsLeadForm"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsPricing",
+            name: "ComponentSectionsPricing"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsRichText",
+            name: "ComponentSectionsRichText"
           },
           {
             kind: "OBJECT",
-            name: "ComponentSectionsTestimonialsGroup",
+            name: "ComponentSectionsTestimonialsGroup"
           },
           {
             kind: "OBJECT",
-            name: "Error",
-          },
-        ],
+            name: "Error"
+          }
+        ]
       },
       {
         kind: "OBJECT",
@@ -4920,12 +5048,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "Page",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -4934,13 +5062,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -4957,15 +5085,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "Page",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -4977,10 +5105,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageCount",
@@ -4988,10 +5116,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageSize",
@@ -4999,10 +5127,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "total",
@@ -5010,13 +5138,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -5027,31 +5155,31 @@ export default {
             type: {
               kind: "OBJECT",
               name: "Global",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "i18NLocale",
             type: {
               kind: "OBJECT",
               name: "I18NLocale",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5060,18 +5188,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "i18NLocales",
@@ -5082,24 +5210,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "I18NLocale",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5107,40 +5235,40 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "i18NLocales_connection",
             type: {
               kind: "OBJECT",
               name: "I18NLocaleEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5148,25 +5276,25 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "leadFormSubmission",
             type: {
               kind: "OBJECT",
               name: "LeadFormSubmission",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5175,18 +5303,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "leadFormSubmissions",
@@ -5197,24 +5325,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "LeadFormSubmission",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5222,40 +5350,40 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "leadFormSubmissions_connection",
             type: {
               kind: "OBJECT",
               name: "LeadFormSubmissionEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5263,34 +5391,34 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "me",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsMe",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "page",
             type: {
               kind: "OBJECT",
               name: "Page",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5299,25 +5427,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "pages",
@@ -5328,31 +5456,31 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "Page",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5360,47 +5488,47 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "pages_connection",
             type: {
               kind: "OBJECT",
               name: "PageEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "locale",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5408,25 +5536,25 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "reviewWorkflowsWorkflow",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflow",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5435,25 +5563,25 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "reviewWorkflowsWorkflowStage",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowStage",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5462,18 +5590,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "reviewWorkflowsWorkflowStages",
@@ -5484,24 +5612,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "ReviewWorkflowsWorkflowStage",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5509,40 +5637,40 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "reviewWorkflowsWorkflowStages_connection",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowStageEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5550,18 +5678,18 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "reviewWorkflowsWorkflows",
@@ -5572,24 +5700,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "ReviewWorkflowsWorkflow",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5597,40 +5725,40 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "reviewWorkflowsWorkflows_connection",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5638,25 +5766,25 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "uploadFile",
             type: {
               kind: "OBJECT",
               name: "UploadFile",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5665,18 +5793,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "uploadFiles",
@@ -5687,24 +5815,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UploadFile",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5712,40 +5840,40 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "uploadFiles_connection",
             type: {
               kind: "OBJECT",
               name: "UploadFileEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5753,25 +5881,25 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "usersPermissionsRole",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsRole",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5780,18 +5908,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "usersPermissionsRoles",
@@ -5802,24 +5930,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UsersPermissionsRole",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5827,40 +5955,40 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "usersPermissionsRoles_connection",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsRoleEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5868,25 +5996,25 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "usersPermissionsUser",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsUser",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
@@ -5895,18 +6023,18 @@ export default {
                   kind: "NON_NULL",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "usersPermissionsUsers",
@@ -5917,24 +6045,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UsersPermissionsUser",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5942,40 +6070,40 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
+                  name: "Any"
+                }
+              }
+            ]
           },
           {
             name: "usersPermissionsUsers_connection",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsUserEntityResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -5983,21 +6111,21 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
+                    name: "Any"
+                  }
+                }
               },
               {
                 name: "status",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
-              },
-            ],
-          },
+                  name: "Any"
+                }
+              }
+            ]
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6009,18 +6137,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -6028,18 +6156,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -6050,24 +6178,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "ReviewWorkflowsWorkflow",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6075,33 +6203,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6109,11 +6237,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "name",
@@ -6121,18 +6249,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "stages",
@@ -6143,24 +6271,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "ReviewWorkflowsWorkflowStage",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6168,33 +6296,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "stages_connection",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowStageRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6202,22 +6330,22 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6234,12 +6362,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "ReviewWorkflowsWorkflow",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -6248,13 +6376,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6271,15 +6399,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "ReviewWorkflowsWorkflow",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6289,17 +6417,17 @@ export default {
             name: "color",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -6307,18 +6435,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -6329,24 +6457,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "ReviewWorkflowsWorkflowStage",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6354,33 +6482,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflowStageRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6388,47 +6516,47 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "name",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "workflow",
             type: {
               kind: "OBJECT",
               name: "ReviewWorkflowsWorkflow",
-              ofType: null,
+              ofType: null
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6445,12 +6573,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "ReviewWorkflowsWorkflowStage",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -6459,13 +6587,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6482,15 +6610,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "ReviewWorkflowsWorkflowStage",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6500,25 +6628,25 @@ export default {
             name: "alternativeText",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "caption",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -6526,26 +6654,26 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "ext",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "formats",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "hash",
@@ -6553,26 +6681,26 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "height",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -6583,24 +6711,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UploadFile",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6608,33 +6736,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "UploadFileRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -6642,11 +6770,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "mime",
@@ -6654,10 +6782,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "name",
@@ -6665,18 +6793,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "previewUrl",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "provider",
@@ -6684,26 +6812,26 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "provider_metadata",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "related",
@@ -6712,10 +6840,10 @@ export default {
               ofType: {
                 kind: "UNION",
                 name: "GenericMorph",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "size",
@@ -6723,18 +6851,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "url",
@@ -6742,21 +6870,21 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "width",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6773,12 +6901,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "UploadFile",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -6787,13 +6915,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6810,15 +6938,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "UploadFile",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6830,13 +6958,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6848,13 +6976,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6864,9 +6992,9 @@ export default {
             name: "jwt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "user",
@@ -6875,13 +7003,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "UsersPermissionsMe",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6891,25 +7019,25 @@ export default {
             name: "blocked",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "confirmed",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "email",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -6917,19 +7045,19 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "role",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsMeRole",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "username",
@@ -6937,13 +7065,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -6953,9 +7081,9 @@ export default {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "id",
@@ -6963,10 +7091,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "name",
@@ -6974,21 +7102,21 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "type",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7000,13 +7128,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7018,18 +7146,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -7037,18 +7165,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -7059,24 +7187,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UsersPermissionsPermission",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7084,33 +7212,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsPermissionRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7118,39 +7246,39 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "role",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsRole",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7167,15 +7295,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "UsersPermissionsPermission",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7185,17 +7313,17 @@ export default {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "description",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -7203,18 +7331,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -7225,24 +7353,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UsersPermissionsRole",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7250,33 +7378,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsRoleRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7284,11 +7412,11 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "name",
@@ -7296,10 +7424,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "permissions",
@@ -7310,24 +7438,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UsersPermissionsPermission",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7335,33 +7463,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "permissions_connection",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsPermissionRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7369,35 +7497,35 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "type",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "users",
@@ -7408,24 +7536,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UsersPermissionsUser",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7433,33 +7561,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "users_connection",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsUserRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7467,14 +7595,14 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
-          },
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7491,12 +7619,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "UsersPermissionsRole",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -7505,13 +7633,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7528,15 +7656,15 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "UsersPermissionsRole",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7548,13 +7676,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7564,25 +7692,25 @@ export default {
             name: "blocked",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "confirmed",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "createdAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "documentId",
@@ -7590,10 +7718,10 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "email",
@@ -7601,18 +7729,18 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "locale",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "localizations",
@@ -7623,24 +7751,24 @@ export default {
                 ofType: {
                   kind: "OBJECT",
                   name: "UsersPermissionsUser",
-                  ofType: null,
-                },
-              },
+                  ofType: null
+                }
+              }
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7648,33 +7776,33 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "localizations_connection",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsUserRelationResponseCollection",
-              ofType: null,
+              ofType: null
             },
             args: [
               {
                 name: "filters",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "pagination",
                 type: {
                   kind: "SCALAR",
-                  name: "Any",
-                },
+                  name: "Any"
+                }
               },
               {
                 name: "sort",
@@ -7682,44 +7810,44 @@ export default {
                   kind: "LIST",
                   ofType: {
                     kind: "SCALAR",
-                    name: "Any",
-                  },
-                },
-              },
-            ],
+                    name: "Any"
+                  }
+                }
+              }
+            ]
           },
           {
             name: "provider",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "publishedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "role",
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsRole",
-              ofType: null,
+              ofType: null
             },
-            args: [],
+            args: []
           },
           {
             name: "updatedAt",
             type: {
               kind: "SCALAR",
-              name: "Any",
+              name: "Any"
             },
-            args: [],
+            args: []
           },
           {
             name: "username",
@@ -7727,13 +7855,13 @@ export default {
               kind: "NON_NULL",
               ofType: {
                 kind: "SCALAR",
-                name: "Any",
-              },
+                name: "Any"
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7744,12 +7872,12 @@ export default {
             type: {
               kind: "OBJECT",
               name: "UsersPermissionsUser",
-              ofType: null,
+              ofType: null
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7766,12 +7894,12 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "UsersPermissionsUser",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
+            args: []
           },
           {
             name: "pageInfo",
@@ -7780,13 +7908,13 @@ export default {
               ofType: {
                 kind: "OBJECT",
                 name: "Pagination",
-                ofType: null,
-              },
+                ofType: null
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "OBJECT",
@@ -7803,21 +7931,21 @@ export default {
                   ofType: {
                     kind: "OBJECT",
                     name: "UsersPermissionsUser",
-                    ofType: null,
-                  },
-                },
-              },
+                    ofType: null
+                  }
+                }
+              }
             },
-            args: [],
-          },
+            args: []
+          }
         ],
-        interfaces: [],
+        interfaces: []
       },
       {
         kind: "SCALAR",
-        name: "Any",
-      },
+        name: "Any"
+      }
     ],
-    directives: [],
-  },
+    directives: []
+  }
 } as unknown as IntrospectionQuery;
