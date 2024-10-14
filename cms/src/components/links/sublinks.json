@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_links_sublinks",
+  "info": {
+    "displayName": "Sublinks",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

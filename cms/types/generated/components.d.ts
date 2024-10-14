@@ -145,6 +145,19 @@ export interface MetaMetadata extends Struct.ComponentSchema {
   };
 }
 
+export interface LinksSublinks extends Struct.ComponentSchema {
+  collectionName: 'components_links_sublinks';
+  info: {
+    displayName: 'Sublinks';
+    description: '';
+  };
+  attributes: {
+    url: Schema.Attribute.String;
+    newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface LinksLink extends Struct.ComponentSchema {
   collectionName: 'components_links_links';
   info: {
@@ -157,6 +170,7 @@ export interface LinksLink extends Struct.ComponentSchema {
     url: Schema.Attribute.String & Schema.Attribute.Required;
     newTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     text: Schema.Attribute.String & Schema.Attribute.Required;
+    sublinks: Schema.Attribute.Component<'links.sublinks', true>;
   };
 }
 
@@ -350,6 +364,7 @@ declare module '@strapi/strapi' {
       'sections.feature-columns-group': SectionsFeatureColumnsGroup;
       'sections.bottom-actions': SectionsBottomActions;
       'meta.metadata': MetaMetadata;
+      'links.sublinks': LinksSublinks;
       'links.link': LinksLink;
       'links.button': LinksButton;
       'links.button-link': LinksButtonLink;

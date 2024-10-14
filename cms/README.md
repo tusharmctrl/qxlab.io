@@ -1,5 +1,15 @@
 # 🚀 Getting started with Strapi
 
+Nodejs - v20.18.0
+
+### Local development
+
+1. Start docker container (postgres) : `docker compose up`
+2. Start Strapi : `npm run develop`
+3. Go to http://localhost:1337
+
+---
+
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
 
 ### `develop`
