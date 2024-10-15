@@ -1798,6 +1798,7 @@ export type GlobalDataQuery = { __typename?: "Query" } & {
         metadata?: Maybe<{ __typename?: "ComponentMetaMetadata" } & Pick<ComponentMetaMetadata, "id" | "metaTitle" | "metaDescription">>;
         navbar?: Maybe<
           { __typename?: "ComponentLayoutNavbar" } & Pick<ComponentLayoutNavbar, "id"> & {
+              logo: { __typename?: "UploadFile" } & Pick<UploadFile, "url">;
               links?: Maybe<
                 Array<
                   Maybe<
@@ -1805,6 +1806,20 @@ export type GlobalDataQuery = { __typename?: "Query" } & {
                         sublinks?: Maybe<
                           Array<Maybe<{ __typename?: "ComponentLinksSublinks" } & Pick<ComponentLinksSublinks, "id" | "newTab" | "text" | "url">>>
                         >;
+                      }
+                  >
+                >
+              >;
+            }
+        >;
+        footer?: Maybe<
+          { __typename: "ComponentLayoutFooter" } & Pick<ComponentLayoutFooter, "id" | "smallText"> & {
+              logo?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url">>;
+              columns?: Maybe<
+                Array<
+                  Maybe<
+                    { __typename?: "ComponentElementsFooterSection" } & Pick<ComponentElementsFooterSection, "id" | "title"> & {
+                        links?: Maybe<Array<Maybe<{ __typename?: "ComponentLinksLink" } & Pick<ComponentLinksLink, "id" | "text" | "url">>>>;
                       }
                   >
                 >
@@ -1862,6 +1877,9 @@ export const GlobalDataDocument = gql`
       }
       navbar {
         id
+        logo {
+          url
+        }
         links {
           id
           newTab
@@ -1874,6 +1892,23 @@ export const GlobalDataDocument = gql`
             url
           }
         }
+      }
+      footer {
+        __typename
+        id
+        logo {
+          url
+        }
+        columns {
+          id
+          title
+          links {
+            id
+            text
+            url
+          }
+        }
+        smallText
       }
     }
   }
@@ -1925,6 +1960,9 @@ export const GlobalData = gql`
       }
       navbar {
         id
+        logo {
+          url
+        }
         links {
           id
           newTab
@@ -1937,6 +1975,23 @@ export const GlobalData = gql`
             url
           }
         }
+      }
+      footer {
+        __typename
+        id
+        logo {
+          url
+        }
+        columns {
+          id
+          title
+          links {
+            id
+            text
+            url
+          }
+        }
+        smallText
       }
     }
   }

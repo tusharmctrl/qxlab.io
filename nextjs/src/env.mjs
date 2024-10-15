@@ -33,6 +33,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_HASURA_GRAPHQL_API: z.string().url(),
+    NEXT_PUBLIC_STRAPI_URL: z.string().url(),
   },
 
   /**
@@ -47,6 +48,7 @@ export const env = createEnv({
     DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
     NEXT_PUBLIC_HASURA_GRAPHQL_API: process.env.NEXT_PUBLIC_HASURA_GRAPHQL_API,
     HASURA_GRAPHQL_ADMIN_SECRET: process.env.HASURA_GRAPHQL_ADMIN_SECRET,
+    NEXT_PUBLIC_STRAPI_URL: process.env.NEXT_PUBLIC_STRAPI_URL,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

@@ -1,6 +1,6 @@
 "use client";
 import SectionRenderer from "@/components/comman/SectionRenderer";
-import { StrapiPageData, StrapiPageDataQuery, StrapiPageDataQueryVariables } from "@/gql/graphql";
+import { StrapiPageData, type StrapiPageDataQuery, StrapiPageDataQueryVariables } from "@/gql/graphql";
 import { useQuery } from "@urql/next";
 import React from "react";
 

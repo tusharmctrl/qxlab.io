@@ -8,7 +8,7 @@ import { TRPCReactProvider } from "@/trpc/react";
 import UrqlProvider from "@/urql/provider";
 import { Suspense } from "react";
 import PageLoader from "@/components/comman/PageLoader";
-import { Header } from "@/components/comman/Header";
+import { HeaderFooter } from "@/components/comman/HeaderFooter";
 
 const description =
   "Revolutionize your digital experience with QXLab.io's AI-powered insights. Instantly measure and improve your website’s performance with over 300 industry-specific data points, and explore how our expert consultancy services can transform your business.";
@@ -28,8 +28,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <TRPCReactProvider>
           <UrqlProvider>
             <Suspense fallback={<PageLoader />}>
-              <Header />
-              {children}
+              <HeaderFooter>{children}</HeaderFooter>
             </Suspense>
           </UrqlProvider>
         </TRPCReactProvider>

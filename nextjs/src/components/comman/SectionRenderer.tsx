@@ -2,7 +2,6 @@ import { FC } from "react";
 import HeroSection from "../home/HeroSection";
 import { type StrapiPageDataQuery } from "@/gql/graphql";
 
-// Map component types to the corresponding components
 const componentMapping: Record<string, FC<HTMLElement>> = {
   ComponentSectionsHero: HeroSection
 };

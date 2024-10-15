@@ -269,35 +269,6 @@ export default function page({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
-      <footer className="bg-charleston-green/50 px-5 py-12 lg:py-20">
-        <div className="container">
-          <div className="flex flex-col items-center justify-center space-y-5 lg:space-y-8">
-            <a href="#">
-              <img src="/images/qx-labs.svg" alt="qxlogo" />
-            </a>
-            <ul className="flex items-center gap-10">
-              <li>
-                <a href="#" className="text-base font-medium text-white/45">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-base font-medium text-white/45">
-                  Privacy&Cookie Statement
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-base font-medium text-white/45">
-                  Investors
-                </a>
-              </li>
-            </ul>
-            <p className="text-sm font-light text-white/45">
-              © 2024 QX Lab Ltd | Company Number <span className="font-semibold">15727970</span>
-            </p>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }

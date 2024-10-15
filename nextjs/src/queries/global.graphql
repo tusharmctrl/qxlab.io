@@ -11,6 +11,9 @@ query GlobalData {
     }
     navbar {
       id
+      logo {
+        url
+      }
       links {
         id
         newTab
@@ -23,6 +26,23 @@ query GlobalData {
           url
         }
       }
+    }
+    footer {
+      __typename
+      id
+      logo {
+        url
+      }
+      columns {
+        id
+        title
+        links {
+          id
+          text
+          url
+        }
+      }
+      smallText
     }
   }
 }
