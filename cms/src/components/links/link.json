@@ -21,7 +21,6 @@
       "required": true
     },
     "sublinks": {
-      "displayName": "Sublinks",
       "type": "component",
       "repeatable": true,
       "component": "links.sublinks"

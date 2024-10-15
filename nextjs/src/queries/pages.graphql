@@ -17,6 +17,44 @@ query StrapiPageData($slug: String!) {
           url
         }
       }
+      ... on ComponentSectionsHomeProductInfo {
+        id
+        title
+        description
+        product_image {
+          url
+        }
+      }
+      ... on ComponentSectionsHomeCaseStudy {
+        id
+        title
+        description
+        case_study_btn {
+          id
+          text
+          type
+          url
+        }
+        image {
+          url
+        }
+      }
+      ... on ComponentSectionsCardCollection {
+        __typename
+        id
+        card {
+          id
+          label
+          title
+          description
+          more {
+            id
+            url
+            text
+            newTab
+          }
+        }
+      }
     }
   }
 }

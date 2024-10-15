@@ -13,6 +13,12 @@ const config = {
         hostname: "localhost",
         port: "1337",
         pathname: "/**"
+      },
+      {
+        protocol: "http",
+        hostname: process.env.NEXT_PUBLIC_IP ?? "",
+        port: "1337",
+        pathname: "/**"
       }
     ]
   }

@@ -5,7 +5,8 @@
     "singularName": "page",
     "pluralName": "pages",
     "displayName": "Page",
-    "name": "page"
+    "name": "page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -46,7 +47,12 @@
         "sections.large-video",
         "sections.rich-text",
         "sections.pricing",
-        "sections.lead-form"
+        "sections.lead-form",
+        "sections.home-product-info",
+        "sections.home-case-study",
+        "sections.card",
+        "sections.card-collection",
+        "sections.service-hero"
       ],
       "pluginOptions": {
         "i18n": {

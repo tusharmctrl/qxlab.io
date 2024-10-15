@@ -492,6 +492,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     pluralName: 'globals';
     displayName: 'Global';
     name: 'global';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -592,6 +593,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     pluralName: 'pages';
     displayName: 'Page';
     name: 'page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -626,6 +628,11 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.rich-text',
         'sections.pricing',
         'sections.lead-form',
+        'sections.home-product-info',
+        'sections.home-case-study',
+        'sections.card',
+        'sections.card-collection',
+        'sections.service-hero',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

@@ -16,6 +16,29 @@ export interface SectionsTestimonialsGroup extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsTest extends Struct.ComponentSchema {
+  collectionName: 'components_sections_tests';
+  info: {
+    displayName: 'test';
+  };
+  attributes: {
+    test: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsServiceHero extends Struct.ComponentSchema {
+  collectionName: 'components_sections_service_heroes';
+  info: {
+    displayName: 'Service Hero';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    button: Schema.Attribute.Component<'links.button-link', false>;
+  };
+}
+
 export interface SectionsRichText extends Struct.ComponentSchema {
   collectionName: 'components_sections_rich_texts';
   info: {
@@ -72,6 +95,36 @@ export interface SectionsLargeVideo extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsHomeProductInfo extends Struct.ComponentSchema {
+  collectionName: 'components_sections_home_product_infos';
+  info: {
+    displayName: 'Home Product Info';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.Text;
+    description: Schema.Attribute.Text;
+    product_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+  };
+}
+
+export interface SectionsHomeCaseStudy extends Struct.ComponentSchema {
+  collectionName: 'components_sections_home_case_studies';
+  info: {
+    displayName: 'Home Case Study';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.Text;
+    description: Schema.Attribute.Text;
+    case_study_btn: Schema.Attribute.Component<'links.button-link', false>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: 'components_slices_heroes';
   info: {
@@ -110,6 +163,29 @@ export interface SectionsFeatureColumnsGroup extends Struct.ComponentSchema {
   };
   attributes: {
     features: Schema.Attribute.Component<'elements.feature-column', true>;
+  };
+}
+
+export interface SectionsCard extends Struct.ComponentSchema {
+  collectionName: 'components_sections_cards';
+  info: {
+    displayName: 'Card';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    more: Schema.Attribute.Component<'links.link', false>;
+  };
+}
+
+export interface SectionsCardCollection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_card_collections';
+  info: {
+    displayName: 'card-collection';
+  };
+  attributes: {
+    card: Schema.Attribute.Component<'sections.card', true>;
   };
 }
 
@@ -355,13 +431,19 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'sections.testimonials-group': SectionsTestimonialsGroup;
+      'sections.test': SectionsTest;
+      'sections.service-hero': SectionsServiceHero;
       'sections.rich-text': SectionsRichText;
       'sections.pricing': SectionsPricing;
       'sections.lead-form': SectionsLeadForm;
       'sections.large-video': SectionsLargeVideo;
+      'sections.home-product-info': SectionsHomeProductInfo;
+      'sections.home-case-study': SectionsHomeCaseStudy;
       'sections.hero': SectionsHero;
       'sections.feature-rows-group': SectionsFeatureRowsGroup;
       'sections.feature-columns-group': SectionsFeatureColumnsGroup;
+      'sections.card': SectionsCard;
+      'sections.card-collection': SectionsCardCollection;
       'sections.bottom-actions': SectionsBottomActions;
       'meta.metadata': MetaMetadata;
       'links.sublinks': LinksSublinks;

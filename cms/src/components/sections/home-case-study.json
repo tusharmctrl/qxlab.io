@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_home_case_studies",
+  "info": {
+    "displayName": "Home Case Study",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "case_study_btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.button-link"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

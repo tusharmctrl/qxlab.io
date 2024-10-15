@@ -372,6 +372,37 @@ export type ComponentSectionsBottomActionsButtonsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
 
+export type ComponentSectionsCard = {
+  __typename?: "ComponentSectionsCard";
+  description: Scalars["String"]["output"];
+  id: Scalars["ID"]["output"];
+  label: Scalars["String"]["output"];
+  more?: Maybe<ComponentLinksLink>;
+  title: Scalars["String"]["output"];
+};
+
+export type ComponentSectionsCardCollection = {
+  __typename?: "ComponentSectionsCardCollection";
+  card?: Maybe<Array<Maybe<ComponentSectionsCard>>>;
+  id: Scalars["ID"]["output"];
+};
+
+export type ComponentSectionsCardCollectionCardArgs = {
+  filters?: InputMaybe<ComponentSectionsCardFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type ComponentSectionsCardFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsCardFiltersInput>>>;
+  description?: InputMaybe<StringFilterInput>;
+  label?: InputMaybe<StringFilterInput>;
+  more?: InputMaybe<ComponentLinksLinkFiltersInput>;
+  not?: InputMaybe<ComponentSectionsCardFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsCardFiltersInput>>>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
 export type ComponentSectionsFeatureColumnsGroup = {
   __typename?: "ComponentSectionsFeatureColumnsGroup";
   features?: Maybe<Array<Maybe<ComponentElementsFeatureColumn>>>;
@@ -413,6 +444,23 @@ export type ComponentSectionsHeroButtonsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
 
+export type ComponentSectionsHomeCaseStudy = {
+  __typename?: "ComponentSectionsHomeCaseStudy";
+  case_study_btn?: Maybe<ComponentLinksButtonLink>;
+  description?: Maybe<Scalars["String"]["output"]>;
+  id: Scalars["ID"]["output"];
+  image: UploadFile;
+  title?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type ComponentSectionsHomeProductInfo = {
+  __typename?: "ComponentSectionsHomeProductInfo";
+  description?: Maybe<Scalars["String"]["output"]>;
+  id: Scalars["ID"]["output"];
+  product_image?: Maybe<UploadFile>;
+  title?: Maybe<Scalars["String"]["output"]>;
+};
+
 export type ComponentSectionsLargeVideo = {
   __typename?: "ComponentSectionsLargeVideo";
   description?: Maybe<Scalars["String"]["output"]>;
@@ -448,6 +496,20 @@ export type ComponentSectionsRichText = {
   __typename?: "ComponentSectionsRichText";
   content?: Maybe<Scalars["String"]["output"]>;
   id: Scalars["ID"]["output"];
+};
+
+export type ComponentSectionsServiceHero = {
+  __typename?: "ComponentSectionsServiceHero";
+  button?: Maybe<ComponentLinksButtonLink>;
+  description?: Maybe<Scalars["String"]["output"]>;
+  id: Scalars["ID"]["output"];
+  title?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type ComponentSectionsTest = {
+  __typename?: "ComponentSectionsTest";
+  id: Scalars["ID"]["output"];
+  test?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type ComponentSectionsTestimonialsGroup = {
@@ -585,13 +647,19 @@ export type GenericMorph =
   | ComponentLinksSublinks
   | ComponentMetaMetadata
   | ComponentSectionsBottomActions
+  | ComponentSectionsCard
+  | ComponentSectionsCardCollection
   | ComponentSectionsFeatureColumnsGroup
   | ComponentSectionsFeatureRowsGroup
   | ComponentSectionsHero
+  | ComponentSectionsHomeCaseStudy
+  | ComponentSectionsHomeProductInfo
   | ComponentSectionsLargeVideo
   | ComponentSectionsLeadForm
   | ComponentSectionsPricing
   | ComponentSectionsRichText
+  | ComponentSectionsServiceHero
+  | ComponentSectionsTest
   | ComponentSectionsTestimonialsGroup
   | Global
   | I18NLocale
@@ -1029,13 +1097,18 @@ export type PageLocalizations_ConnectionArgs = {
 
 export type PageContentSectionsDynamicZone =
   | ComponentSectionsBottomActions
+  | ComponentSectionsCard
+  | ComponentSectionsCardCollection
   | ComponentSectionsFeatureColumnsGroup
   | ComponentSectionsFeatureRowsGroup
   | ComponentSectionsHero
+  | ComponentSectionsHomeCaseStudy
+  | ComponentSectionsHomeProductInfo
   | ComponentSectionsLargeVideo
   | ComponentSectionsLeadForm
   | ComponentSectionsPricing
   | ComponentSectionsRichText
+  | ComponentSectionsServiceHero
   | ComponentSectionsTestimonialsGroup
   | Error;
 
@@ -1842,6 +1915,18 @@ export type StrapiPageDataQuery = { __typename?: "Query" } & {
             Array<
               Maybe<
                 | { __typename?: "ComponentSectionsBottomActions" }
+                | { __typename?: "ComponentSectionsCard" }
+                | ({ __typename: "ComponentSectionsCardCollection" } & Pick<ComponentSectionsCardCollection, "id"> & {
+                      card?: Maybe<
+                        Array<
+                          Maybe<
+                            { __typename?: "ComponentSectionsCard" } & Pick<ComponentSectionsCard, "id" | "label" | "title" | "description"> & {
+                                more?: Maybe<{ __typename?: "ComponentLinksLink" } & Pick<ComponentLinksLink, "id" | "url" | "text" | "newTab">>;
+                              }
+                          >
+                        >
+                      >;
+                    })
                 | { __typename?: "ComponentSectionsFeatureColumnsGroup" }
                 | { __typename?: "ComponentSectionsFeatureRowsGroup" }
                 | ({ __typename: "ComponentSectionsHero" } & Pick<ComponentSectionsHero, "id" | "title" | "label" | "description"> & {
@@ -1849,10 +1934,18 @@ export type StrapiPageDataQuery = { __typename?: "Query" } & {
                         Array<Maybe<{ __typename?: "ComponentLinksButtonLink" } & Pick<ComponentLinksButtonLink, "id" | "text" | "newTab" | "type" | "url">>>
                       >;
                     })
+                | ({ __typename?: "ComponentSectionsHomeCaseStudy" } & Pick<ComponentSectionsHomeCaseStudy, "id" | "title" | "description"> & {
+                      case_study_btn?: Maybe<{ __typename?: "ComponentLinksButtonLink" } & Pick<ComponentLinksButtonLink, "id" | "text" | "type" | "url">>;
+                      image: { __typename?: "UploadFile" } & Pick<UploadFile, "url">;
+                    })
+                | ({ __typename?: "ComponentSectionsHomeProductInfo" } & Pick<ComponentSectionsHomeProductInfo, "id" | "title" | "description"> & {
+                      product_image?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url">>;
+                    })
                 | { __typename?: "ComponentSectionsLargeVideo" }
                 | { __typename?: "ComponentSectionsLeadForm" }
                 | { __typename?: "ComponentSectionsPricing" }
                 | { __typename?: "ComponentSectionsRichText" }
+                | { __typename?: "ComponentSectionsServiceHero" }
                 | { __typename?: "ComponentSectionsTestimonialsGroup" }
                 | { __typename?: "Error" }
               >
@@ -1937,6 +2030,44 @@ export const StrapiPageDataDocument = gql`
             url
           }
         }
+        ... on ComponentSectionsHomeProductInfo {
+          id
+          title
+          description
+          product_image {
+            url
+          }
+        }
+        ... on ComponentSectionsHomeCaseStudy {
+          id
+          title
+          description
+          case_study_btn {
+            id
+            text
+            type
+            url
+          }
+          image {
+            url
+          }
+        }
+        ... on ComponentSectionsCardCollection {
+          __typename
+          id
+          card {
+            id
+            label
+            title
+            description
+            more {
+              id
+              url
+              text
+              newTab
+            }
+          }
+        }
       }
     }
   }
@@ -2014,6 +2145,44 @@ export const StrapiPageData = gql`
             newTab
             type
             url
+          }
+        }
+        ... on ComponentSectionsHomeProductInfo {
+          id
+          title
+          description
+          product_image {
+            url
+          }
+        }
+        ... on ComponentSectionsHomeCaseStudy {
+          id
+          title
+          description
+          case_study_btn {
+            id
+            text
+            type
+            url
+          }
+          image {
+            url
+          }
+        }
+        ... on ComponentSectionsCardCollection {
+          __typename
+          id
+          card {
+            id
+            label
+            title
+            description
+            more {
+              id
+              url
+              text
+              newTab
+            }
           }
         }
       }
@@ -2951,6 +3120,121 @@ export default {
       },
       {
         kind: "OBJECT",
+        name: "ComponentSectionsCard",
+        fields: [
+          {
+            name: "description",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "label",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "more",
+            type: {
+              kind: "OBJECT",
+              name: "ComponentLinksLink",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "title",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "ComponentSectionsCardCollection",
+        fields: [
+          {
+            name: "card",
+            type: {
+              kind: "LIST",
+              ofType: {
+                kind: "OBJECT",
+                name: "ComponentSectionsCard",
+                ofType: null
+              }
+            },
+            args: [
+              {
+                name: "filters",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "pagination",
+                type: {
+                  kind: "SCALAR",
+                  name: "Any"
+                }
+              },
+              {
+                name: "sort",
+                type: {
+                  kind: "LIST",
+                  ofType: {
+                    kind: "SCALAR",
+                    name: "Any"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
         name: "ComponentSectionsFeatureColumnsGroup",
         fields: [
           {
@@ -3157,6 +3441,104 @@ export default {
       },
       {
         kind: "OBJECT",
+        name: "ComponentSectionsHomeCaseStudy",
+        fields: [
+          {
+            name: "case_study_btn",
+            type: {
+              kind: "OBJECT",
+              name: "ComponentLinksButtonLink",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "description",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "image",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "OBJECT",
+                name: "UploadFile",
+                ofType: null
+              }
+            },
+            args: []
+          },
+          {
+            name: "title",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "ComponentSectionsHomeProductInfo",
+        fields: [
+          {
+            name: "description",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "product_image",
+            type: {
+              kind: "OBJECT",
+              name: "UploadFile",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "title",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
         name: "ComponentSectionsLargeVideo",
         fields: [
           {
@@ -3344,6 +3726,75 @@ export default {
                 kind: "SCALAR",
                 name: "Any"
               }
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "ComponentSectionsServiceHero",
+        fields: [
+          {
+            name: "button",
+            type: {
+              kind: "OBJECT",
+              name: "ComponentLinksButtonLink",
+              ofType: null
+            },
+            args: []
+          },
+          {
+            name: "description",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          },
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "title",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
+            },
+            args: []
+          }
+        ],
+        interfaces: []
+      },
+      {
+        kind: "OBJECT",
+        name: "ComponentSectionsTest",
+        fields: [
+          {
+            name: "id",
+            type: {
+              kind: "NON_NULL",
+              ofType: {
+                kind: "SCALAR",
+                name: "Any"
+              }
+            },
+            args: []
+          },
+          {
+            name: "test",
+            type: {
+              kind: "SCALAR",
+              name: "Any"
             },
             args: []
           }
@@ -3581,6 +4032,14 @@ export default {
           },
           {
             kind: "OBJECT",
+            name: "ComponentSectionsCard"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsCardCollection"
+          },
+          {
+            kind: "OBJECT",
             name: "ComponentSectionsFeatureColumnsGroup"
           },
           {
@@ -3590,6 +4049,14 @@ export default {
           {
             kind: "OBJECT",
             name: "ComponentSectionsHero"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsHomeCaseStudy"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsHomeProductInfo"
           },
           {
             kind: "OBJECT",
@@ -3606,6 +4073,14 @@ export default {
           {
             kind: "OBJECT",
             name: "ComponentSectionsRichText"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsServiceHero"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsTest"
           },
           {
             kind: "OBJECT",
@@ -5174,6 +5649,14 @@ export default {
           },
           {
             kind: "OBJECT",
+            name: "ComponentSectionsCard"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsCardCollection"
+          },
+          {
+            kind: "OBJECT",
             name: "ComponentSectionsFeatureColumnsGroup"
           },
           {
@@ -5183,6 +5666,14 @@ export default {
           {
             kind: "OBJECT",
             name: "ComponentSectionsHero"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsHomeCaseStudy"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsHomeProductInfo"
           },
           {
             kind: "OBJECT",
@@ -5199,6 +5690,10 @@ export default {
           {
             kind: "OBJECT",
             name: "ComponentSectionsRichText"
+          },
+          {
+            kind: "OBJECT",
+            name: "ComponentSectionsServiceHero"
           },
           {
             kind: "OBJECT",
