@@ -1,0 +1,22 @@
+query StrapiPageData($slug: String!) {
+  pages(filters: { slug: { eq: $slug } }) {
+    __typename
+    documentId
+    contentSections {
+      ... on ComponentSectionsHero {
+        __typename
+        id
+        title
+        label
+        description
+        buttons {
+          id
+          text
+          newTab
+          type
+          url
+        }
+      }
+    }
+  }
+}

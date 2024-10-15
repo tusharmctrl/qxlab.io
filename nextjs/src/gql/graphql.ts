@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+import * as Urql from "urql";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -6,6 +7,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never };
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string };
@@ -1813,6 +1815,102 @@ export type GlobalDataQuery = { __typename?: "Query" } & {
   >;
 };
 
+export type StrapiPageDataQueryVariables = Exact<{
+  slug: Scalars["String"]["input"];
+}>;
+
+export type StrapiPageDataQuery = { __typename?: "Query" } & {
+  pages: Array<
+    Maybe<
+      { __typename: "Page" } & Pick<Page, "documentId"> & {
+          contentSections?: Maybe<
+            Array<
+              Maybe<
+                | { __typename?: "ComponentSectionsBottomActions" }
+                | { __typename?: "ComponentSectionsFeatureColumnsGroup" }
+                | { __typename?: "ComponentSectionsFeatureRowsGroup" }
+                | ({ __typename: "ComponentSectionsHero" } & Pick<ComponentSectionsHero, "id" | "title" | "label" | "description"> & {
+                      buttons?: Maybe<
+                        Array<Maybe<{ __typename?: "ComponentLinksButtonLink" } & Pick<ComponentLinksButtonLink, "id" | "text" | "newTab" | "type" | "url">>>
+                      >;
+                    })
+                | { __typename?: "ComponentSectionsLargeVideo" }
+                | { __typename?: "ComponentSectionsLeadForm" }
+                | { __typename?: "ComponentSectionsPricing" }
+                | { __typename?: "ComponentSectionsRichText" }
+                | { __typename?: "ComponentSectionsTestimonialsGroup" }
+                | { __typename?: "Error" }
+              >
+            >
+          >;
+        }
+    >
+  >;
+};
+
+export const GlobalDataDocument = gql`
+  query GlobalData {
+    global {
+      documentId
+      favicon {
+        url
+      }
+      metadata {
+        id
+        metaTitle
+        metaDescription
+      }
+      navbar {
+        id
+        links {
+          id
+          newTab
+          text
+          url
+          sublinks {
+            id
+            newTab
+            text
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+export function useGlobalDataQuery(options?: Omit<Urql.UseQueryArgs<GlobalDataQueryVariables>, "query">) {
+  return Urql.useQuery<GlobalDataQuery, GlobalDataQueryVariables>({ query: GlobalDataDocument, ...options });
+}
+export const StrapiPageDataDocument = gql`
+  query StrapiPageData($slug: String!) {
+    pages(filters: { slug: { eq: $slug } }) {
+      __typename
+      documentId
+      contentSections {
+        ... on ComponentSectionsHero {
+          __typename
+          id
+          title
+          label
+          description
+          buttons {
+            id
+            text
+            newTab
+            type
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+export function useStrapiPageDataQuery(options: Omit<Urql.UseQueryArgs<StrapiPageDataQueryVariables>, "query">) {
+  return Urql.useQuery<StrapiPageDataQuery, StrapiPageDataQueryVariables>({ query: StrapiPageDataDocument, ...options });
+}
+
 export const GlobalData = gql`
   query GlobalData {
     global {
@@ -1836,6 +1934,30 @@ export const GlobalData = gql`
             id
             newTab
             text
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+export const StrapiPageData = gql`
+  query StrapiPageData($slug: String!) {
+    pages(filters: { slug: { eq: $slug } }) {
+      __typename
+      documentId
+      contentSections {
+        ... on ComponentSectionsHero {
+          __typename
+          id
+          title
+          label
+          description
+          buttons {
+            id
+            text
+            newTab
+            type
             url
           }
         }
