@@ -69,18 +69,18 @@ export default function page() {
         </div>
     </header>
 
-    <section  className="p-5 relative lg:bg-hero-pattern lg:bg-center-right lg:bg-no-repeat lg:bg-cover flex items-center justify-center  bg-before flex-grow-0 flex-shrink-0  flex-col min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-200px)] xl:min-h-screen">
+    <section  className="p-5 relative lg:bg-hero-pattern lg:bg-center-right lg:bg-no-repeat lg:bg-cover flex items-center justify-center  bg-before flex-grow-0 flex-shrink-0  flex-col min-h-[calc(100vh-140px)] md:min-h-[calc(100vh-200px)] xl:min-h-screen">
       <div className="container z-10">
         <div className="flex">
          
             <div className="max-w-2xl space-y-5 md:space-y-8">
-              <h1 className="text-white text-5xl md:text-6xl lg:text-8xl leading-1.08em  font-semibold">Generate your QXi Score <span className="text-waterspout">Today</span></h1>
+              <h1 className="text-white text-5xl md:text-6xl lg:text-8xl leading-1.4em md:leading-1.08em  font-semibold">Generate your QXi Score <span className="text-waterspout">Today</span></h1>
               <div className="max-w-md">
-              <p className="text-cultured text-xl font-normal"><span className="inline-block mr-2"><img src={Rocket.src} className="w-5 h-5" alt="rocket"/></span>Welcome to QX Lab: Revolutionizing the Customer Experience industry with AI-Powered Innovation!
+              <p className="text-cultured text-lg md:text-xl font-normal"><span className="inline-block mr-2"><img src={Rocket.src} className="w-5 h-5" alt="rocket"/></span>Welcome to QX Lab: Revolutionizing the Customer Experience industry with AI-Powered Innovation!
 
               </p>
               </div>
-              <button className="bg-pastel-green text-sm md:text-base text-cultured px-4 py-3 md:py-3.5 md:px-5 rounded-lg font-semibold">Coming Soon</button>
+              <button className="transition-all duration-300 hover:scale-110 scale-100 bg-pastel-green text-sm md:text-base text-cultured px-4 py-3 md:py-3.5 md:px-5 rounded-lg font-semibold">Coming Soon</button>
             </div>
         </div>
       </div>
@@ -103,18 +103,18 @@ export default function page() {
         </div>
       </div>
     </section>
-    <section className="mt-5 pt-10 px-5 xl:px-66px">
-      <div className="relative space-y-7">
-        <div className="max-w-5xl mx-auto text-center space-y-7">
-        <h2 className="text-3xl leading-2em text-white font-semibold">We use proprietary AI that employs over 1000+ industry specific data points to evaluate your site.</h2>
-        <p className="text-base font-normal text-white leading-8">QXLab melds cutting-edge technology with extensive industry insights to re-define digital user experiences, establishing new standards in website performance and UX excellence.</p>
+    <section className="mt-5 pt-0 md:pt-10 px-5 xl:px-66px">
+      <div className="relative space-y-5 md:space-y-7">
+        <div className="max-w-5xl mx-auto text-center space-y-5 md:space-y-7">
+        <h2 className="text-2xl leading-1.8em md:text-3xl md:leading-2em text-white font-semibold">We use proprietary AI that employs over 1000+ industry specific data points to evaluate your site.</h2>
+        <p className="text-sm md:text-base font-normal text-white leading-6 md:leading-8">QXLab melds cutting-edge technology with extensive industry insights to re-define digital user experiences, establishing new standards in website performance and UX excellence.</p>
       </div>
       <div className="relative">
         <img src={LinkedInCover.src} alt="linkedIn-cover"/>
       </div>
       </div>
     </section>
-    <section className="py-10 relative p-5">
+    <section className="py-5 md:py-10 relative p-5">
       <div className="hidden xl:block bg-svg-blur bg-svg-blur-fs w-590px h-432px absolute z-1 -left-16 top-16">
         <svg className="w-full h-full" width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <circle cx="32.5" cy="32.5" r="32.5" fill="url(#paint_229ce2ae)"></circle>
@@ -154,10 +154,10 @@ export default function page() {
           </div>
           <div className="w-full xl:w-1/2 p-2.5">
             <div className="space-y-2">
-              <h2 className="text-white font-bold text-66px leading-1.2em">QXc<br/> Case Studies</h2>
+              <h2 className="text-white font-bold text-4xl md:text-66px leading-1.2em">QXc<br/> Case Studies</h2>
               <p className="text-base text-white leading-1.8em">See how QX Lab's consultancy services have transformed businesses. Our QXc Case Studies highlight the impact of our insights and expert guidance on customer experience and digital performance.</p>
-              <div className="!mt-11">
-                  <button  className="text-waterspout text-lg transition-all duration-500 scale-100 hover:scale-110 font-semibold flex items-center gap-4">Case Studies <span>
+              <div className="!mt-5 md:!mt-11">
+                  <button  className="text-waterspout text-base md:text-lg transition-all duration-500 scale-100 hover:scale-110 font-semibold flex items-center gap-4">Case Studies <span>
                     <svg className="w-1.5 stroke-waterspout" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L8 8L1 15"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -171,24 +171,24 @@ export default function page() {
     <div className="p-5 lg:p-12 mt-2.5 marquee-wrapper overflow-hidden">
       <div className="qx-marquee " >
         <ul className="flex items-center">
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
-          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className=" md:w-20" src={Foshtech.src} alt="foshtech"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
+          <li className="mx-10 lg:mx-16 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
         </ul>
       </div>
     </div>
@@ -198,7 +198,7 @@ export default function page() {
         <div className="flex items-start flex-wrap gap-y-4 lg:gap-y-6">
           <div className="w-full lg:w-1/2 p-2.5">
               <div className="max-w-488px space-y-4 lg:space-y-7">
-                <h2 className="text-white text-40px font-medium">Contact</h2>
+                <h2 className="text-white text-3xl md:text-40px font-medium">Contact</h2>
                 <div className="flex flex-col">
                   <a href="#" className="text-cultured text-xl font-normal">QxLab Ltd.</a>
                   <a href="#" className="text-eucalyptus text-sm font-normal">Company no:15727970</a>
@@ -252,10 +252,10 @@ export default function page() {
           <a href="#">
             <img src={Qxlogo.src} alt="qxlogo"/>
           </a>
-          <ul className="flex items-center gap-10">
-            <li><a href="#" className="text-base text-white/45 font-medium">About Us</a></li>
-            <li><a href="#" className="text-base text-white/45 font-medium">Privacy&Cookie Statement</a></li>
-            <li><a href="#" className="text-base text-white/45 font-medium">Investors</a></li>
+          <ul className="flex items-center gap-4 md:gap-10">
+            <li><a href="#" className="text-sm md:text-base text-white/45 font-medium">About Us</a></li>
+            <li><a href="#" className="text-sm md:text-base text-white/45 font-medium">Privacy&Cookie Statement</a></li>
+            <li><a href="#" className="text-sm md:text-base text-white/45 font-medium">Investors</a></li>
           </ul>
           <p className="text-sm text-white/45 font-light">© 2024 QX Lab Ltd | Company Number  <span className="font-semibold">15727970</span></p>
         </div>
