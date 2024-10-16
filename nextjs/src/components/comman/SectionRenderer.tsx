@@ -12,7 +12,7 @@ const componentMapping: Record<string, FC<HTMLElement>> = {
   ComponentSectionsCardCollection: CardSection
 };
 
-const SectionRenderer = ({ section }) => {
+const SectionRenderer = ({ section }: { section }) => {
   const Component = componentMapping[section.__typename];
 
   if (!Component) {

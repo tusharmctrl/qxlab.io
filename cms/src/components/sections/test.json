@@ -1,12 +1,16 @@
 {
   "collectionName": "components_sections_tests",
   "info": {
-    "displayName": "test"
+    "displayName": "test",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "test": {
       "type": "string"
+    },
+    "testmed": {
+      "type": "blocks"
     }
   }
 }

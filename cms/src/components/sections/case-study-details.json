@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_case_study_details",
+  "info": {
+    "displayName": "case-study-details",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "details": {
+      "type": "richtext"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

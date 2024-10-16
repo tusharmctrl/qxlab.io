@@ -1,57 +1,59 @@
 query StrapiPageData($slug: String!) {
-  pages(filters: { slug: { eq: $slug } }) {
-    __typename
-    documentId
-    contentSections {
-      ... on ComponentSectionsHero {
-        __typename
-        id
-        title
-        label
-        description
-        buttons {
+  cms {
+    pages(filters: { slug: { eq: $slug } }) {
+      __typename
+      documentId
+      contentSections {
+        ... on ComponentSectionsHero {
+          __typename
           id
-          text
-          newTab
-          type
-          url
-        }
-      }
-      ... on ComponentSectionsHomeProductInfo {
-        id
-        title
-        description
-        product_image {
-          url
-        }
-      }
-      ... on ComponentSectionsHomeCaseStudy {
-        id
-        title
-        description
-        case_study_btn {
-          id
-          text
-          type
-          url
-        }
-        image {
-          url
-        }
-      }
-      ... on ComponentSectionsCardCollection {
-        __typename
-        id
-        card {
-          id
-          label
           title
+          label
           description
-          more {
+          buttons {
             id
-            url
             text
             newTab
+            type
+            url
+          }
+        }
+        ... on ComponentSectionsHomeProductInfo {
+          id
+          title
+          description
+          product_image {
+            url
+          }
+        }
+        ... on ComponentSectionsHomeCaseStudy {
+          id
+          title
+          description
+          case_study_btn {
+            id
+            text
+            type
+            url
+          }
+          image {
+            url
+          }
+        }
+        ... on ComponentSectionsCardCollection {
+          __typename
+          id
+          card {
+            id
+            label
+            title
+            description
+            more {
+              id
+              url
+              text
+              newTab
+            }
           }
         }
       }

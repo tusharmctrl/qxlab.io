@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_solutions",
+  "info": {
+    "displayName": "Solutions",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "solution_cards": {
+      "displayName": "Solution Card",
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.solution-card"
+    }
+  }
+}

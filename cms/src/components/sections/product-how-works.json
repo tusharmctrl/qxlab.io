@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_product_how_works",
+  "info": {
+    "displayName": "productHowWorks",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "worksFeature": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.feature-columns-group"
+    }
+  }
+}

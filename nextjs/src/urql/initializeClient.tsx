@@ -1,13 +1,5 @@
 import { env } from "@/env.mjs";
-import {
-  cacheExchange,
-  type Client,
-  createClient,
-  type Exchange,
-  fetchExchange,
-  type SSRData,
-  ssrExchange,
-} from "@urql/next";
+import { cacheExchange, type Client, createClient, type Exchange, fetchExchange, type SSRData, ssrExchange } from "@urql/next";
 import { authExchange } from "@urql/exchange-auth";
 let urqlClient: Client | null = null;
 let ssrCache: ReturnType<typeof ssrExchange> | null = null;
@@ -22,9 +14,16 @@ export function initUrqlClient(token: string | null, initialState?: SSRData) {
       return {
         addAuthToOperation: (operation) => {
           if (!operation) return operation;
-          return utils.appendHeaders(operation, {
-            authorization: `Bearer ${token ?? ""}`,
-          });
+
+          // TODO : Fix authorization in production
+          return utils.appendHeaders(
+            operation,
+            process.env.NODE_ENV === "development"
+              ? { "x-hasura-admin-secret": "myadminsecretkey" }
+              : {
+                  authorization: `Bearer ${token ?? ""}`
+                }
+          );
         },
         willAuthError: (_operation) => {
           return false; // todo: check if token is expired
@@ -37,14 +36,14 @@ export function initUrqlClient(token: string | null, initialState?: SSRData) {
         refreshAuth: async (): Promise<void> => {
           // token = await getToken({ template: "hasura" });
           // console.log("refreshAuth", token);
-        },
+        }
       };
     }),
-    fetchExchange,
+    fetchExchange
   ];
   urqlClient = createClient({
     url: env.NEXT_PUBLIC_HASURA_GRAPHQL_API,
-    exchanges: exchange,
+    exchanges: exchange
   });
   // } else {
   //when navigating to another page, client is already initialized.
@@ -61,8 +60,8 @@ export const initCronUrqlClient = () => {
     exchanges: [cacheExchange, fetchExchange],
     fetchOptions: {
       headers: {
-        "x-hasura-admin-secret": env.HASURA_GRAPHQL_ADMIN_SECRET,
-      },
-    },
+        "x-hasura-admin-secret": env.HASURA_GRAPHQL_ADMIN_SECRET
+      }
+    }
   });
 };

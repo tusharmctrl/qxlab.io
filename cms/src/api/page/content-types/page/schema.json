@@ -52,7 +52,23 @@
         "sections.home-case-study",
         "sections.card",
         "sections.card-collection",
-        "sections.service-hero"
+        "sections.service-hero",
+        "sections.test",
+        "sections.hero-product-page",
+        "sections.solutions",
+        "sections.solution-card",
+        "sections.product-works",
+        "sections.faq",
+        "sections.product-coming-hero",
+        "sections.about-us",
+        "sections.about-section",
+        "sections.blog",
+        "sections.social-media-links",
+        "sections.product-how-works",
+        "sections.services-card",
+        "sections.our-services",
+        "sections.contact-us",
+        "sections.title"
       ],
       "pluginOptions": {
         "i18n": {
@@ -67,7 +83,8 @@
         }
       },
       "type": "string",
-      "regex": "^$|^[a-zA-Z/-]+$"
+      "regex": "^$|^[a-zA-Z/-]+$",
+      "required": true
     }
   }
 }

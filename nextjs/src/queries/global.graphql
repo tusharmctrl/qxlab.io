@@ -1,48 +1,50 @@
 query GlobalData {
-  global {
-    documentId
-    favicon {
-      url
-    }
-    metadata {
-      id
-      metaTitle
-      metaDescription
-    }
-    navbar {
-      id
-      logo {
+  cms {
+    global {
+      documentId
+      favicon {
         url
       }
-      links {
+      metadata {
         id
-        newTab
-        text
-        url
-        sublinks {
+        metaTitle
+        metaDescription
+      }
+      navbar {
+        id
+        logo {
+          url
+        }
+        links {
           id
           newTab
           text
           url
+          sublinks {
+            id
+            newTab
+            text
+            url
+          }
         }
       }
-    }
-    footer {
-      __typename
-      id
-      logo {
-        url
-      }
-      columns {
+      footer {
+        __typename
         id
-        title
-        links {
-          id
-          text
+        logo {
           url
         }
+        columns {
+          id
+          title
+          links {
+            id
+            text
+            url
+          }
+        }
+        smallText
       }
-      smallText
     }
   }
 }

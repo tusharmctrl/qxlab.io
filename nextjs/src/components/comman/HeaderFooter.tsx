@@ -25,13 +25,13 @@ export const HeaderFooter = ({ children }: LayoutProps) => {
 
   return (
     <>
-      {data?.global?.navbar && (
+      {data?.cms?.global?.navbar && (
         <header className="gradieant-header fixed top-0 z-999 w-full px-5 py-4 xl:px-2.5">
           <div className="container">
             <div className="w-full">
               <div className="flex items-center justify-between xl:justify-start">
                 <Link href="/" className="mr-11">
-                  <Image width={70} height={50} src={`${env.NEXT_PUBLIC_STRAPI_URL}${data?.global?.navbar?.logo?.url}`} alt="qxlogo" />
+                  <Image width={70} height={50} src={`${env.NEXT_PUBLIC_STRAPI_URL}${data?.cms?.global?.navbar?.logo?.url}`} alt="qxlogo" />
                 </Link>
                 <button className="flex items-center gap-3 text-base text-white xl:hidden">
                   <span className="relative flex flex-col gap-y-1.5">
@@ -44,7 +44,7 @@ export const HeaderFooter = ({ children }: LayoutProps) => {
                 <div className="hidden items-center gap-x-14 xl:flex">
                   <NavigationMenu>
                     <NavigationMenuList>
-                      {data?.global?.navbar?.links?.map((link, index) => (
+                      {data?.cms?.global?.navbar?.links?.map((link, index) => (
                         <NavigationMenuItem key={index}>
                           {!link?.sublinks?.length ? (
                             <Link href={link?.url ?? ""} className="text-sm font-semibold text-white">
@@ -77,15 +77,15 @@ export const HeaderFooter = ({ children }: LayoutProps) => {
 
       {children}
 
-      {data?.global?.footer && (
+      {data?.cms?.global?.footer && (
         <footer className="bg-charleston-green/50 px-5 py-12 lg:py-20">
           <div className="container">
             <div className="flex flex-col items-center justify-center space-y-5 lg:space-y-8">
               <Link href="#">
-                <Image width={50} height={50} src={`${env.NEXT_PUBLIC_STRAPI_URL}${data?.global?.footer?.logo?.url}`} alt="qxlogo" />
+                <Image width={50} height={50} src={`${env.NEXT_PUBLIC_STRAPI_URL}${data?.cms?.global?.footer?.logo?.url}`} alt="qxlogo" />
               </Link>
               <ul className="flex items-center gap-10">
-                {data?.global?.footer?.columns?.map((footer, index) => {
+                {data?.cms?.global?.footer?.columns?.map((footer, index) => {
                   return (
                     <li key={footer?.id ?? index}>
                       <Link className="text-base font-medium text-white/45" href={footer?.links?.[0]?.url ?? "/"}>

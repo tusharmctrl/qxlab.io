@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_about_us_s",
+  "info": {
+    "displayName": "About Us "
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "about_section": {
+      "displayName": "About Section",
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.about-section"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_contact_uses",
+  "info": {
+    "displayName": "Contact Us"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "contact_us_btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.button-link"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

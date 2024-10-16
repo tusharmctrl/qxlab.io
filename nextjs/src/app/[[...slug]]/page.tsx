@@ -8,9 +8,9 @@ export default function page({ params }: { params: { slug: string[] } }) {
   const { slug } = params;
   const [{ data }] = useQuery<StrapiPageDataQuery, StrapiPageDataQueryVariables>({
     query: StrapiPageData,
-    variables: { slug: slug ? slug?.join("/") : "/" },
+    variables: { slug: slug ? `/${slug?.join("/")}` : "/" },
     requestPolicy: "cache-first"
   });
 
-  return <>{data?.pages?.[0]?.contentSections?.map((section, index) => <SectionRenderer key={index} section={section} />)}</>;
+  return <>{data?.cms?.pages?.[0]?.contentSections?.map((section, index) => <SectionRenderer key={index} section={section} />)}</>;
 }

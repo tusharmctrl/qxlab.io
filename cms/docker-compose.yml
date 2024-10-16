@@ -1,6 +1,6 @@
 version: "3"
 services:
-  postgres:
+  strapiDB:
     image: postgres:15
     restart: always
     ports:
@@ -10,5 +10,44 @@ services:
     environment:
       POSTGRES_PASSWORD: postgrespassword
       POSTGRES_USER: postgres
+
+  hasura:
+    image: hasura/graphql-engine:v2.42.0
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: "postgres://hasura:hasuraPassword@hasuraDB:5433/hasuradb"
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: "startup, http-log, webhook-log, websocket-log, query-log"
+    depends_on:
+      hasuraDB:
+        condition: service_healthy
+    env_file:
+      - .env
+
+  hasuraDB:
+    image: postgres:15
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    ports:
+      - "5433:5432"
+    volumes:
+      - hasura_db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: hasura
+      POSTGRES_PASSWORD: hasuraPassword
+      POSTGRES_DB: hasuradb
+    env_file:
+      - .env
+
 volumes:
   db_data:
+  hasura_db_data:

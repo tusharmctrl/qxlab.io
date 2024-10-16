@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_our_services",
+  "info": {
+    "displayName": "Our Services",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "services_cards": {
+      "displayName": "Services Card",
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.services-card"
+    }
+  }
+}
