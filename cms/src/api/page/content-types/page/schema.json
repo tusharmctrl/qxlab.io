@@ -102,6 +102,18 @@
       "type": "string",
       "regex": "^$|^[a-zA-Z/-]+$",
       "required": true
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog",
+      "mappedBy": "page"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "page"
     }
   }
 }

@@ -497,6 +497,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
   attributes: {
     name: Schema.Attribute.String;
+    blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -524,6 +525,12 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String;
     date: Schema.Attribute.Date;
     blog_content_block: Schema.Attribute.Blocks;
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
+    blog_tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::blog-tag.blog-tag'
+    >;
+    page: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -548,6 +555,7 @@ export interface ApiBlogTagBlogTag extends Struct.CollectionTypeSchema {
   };
   attributes: {
     tag_name: Schema.Attribute.String;
+    blogs: Schema.Attribute.Relation<'manyToMany', 'api::blog.blog'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -610,6 +618,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::case-study.case-study'
     >;
+    page: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -820,6 +829,11 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

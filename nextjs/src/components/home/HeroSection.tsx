@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HeroSection(data) {
+export default function HeroSection(data: any) {
   return (
     <section className="bg-before relative flex min-h-[calc(100vh-100px)] flex-shrink-0 flex-grow-0 flex-col items-center justify-center bg-hero-pattern p-5 md:min-h-[calc(100vh-200px)] lg:bg-cover lg:bg-center-right lg:bg-no-repeat xl:min-h-screen">
       <div className="container z-10 w-full">

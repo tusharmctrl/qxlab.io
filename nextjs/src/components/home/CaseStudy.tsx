@@ -2,7 +2,7 @@ import { env } from "@/env.mjs";
 import Image from "next/image";
 import React from "react";
 
-export default function CaseStudy(data) {
+export default function CaseStudy(data: any) {
   return (
     <section className="relative p-5 py-10">
       <div className="bg-svg-blur bg-svg-blur-fs absolute -left-16 top-16 z-1 hidden h-432px w-590px xl:block">

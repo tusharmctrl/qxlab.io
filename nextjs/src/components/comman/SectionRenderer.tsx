@@ -5,20 +5,27 @@ import ProductInfo from "../home/ProductInfo";
 import CaseStudy from "../home/CaseStudy";
 import CardSection from "../home/CardSection";
 import { StrapiPageDataQuery } from "@/gql/graphql";
+import OurServices from "../services/OurServices";
+import ContactUs from "../services/ContactUs";
+import SolutionsPage from "../solutions/SolutionsPage";
 
-const componentMapping: Record<string, FC<HTMLElement>> = {
+const componentMapping: Record<string, FC<React.JSX.Element>> = {
   ComponentSectionsHero: HeroSection,
   ComponentSectionsHomeProductInfo: ProductInfo,
   ComponentSectionsHomeCaseStudy: CaseStudy,
   ComponentSectionsCardCollection: CardSection,
-  ComponentSectionsServiceHero: ServicePageHeroSection
+  ComponentSectionsServiceHero: ServicePageHeroSection,
+  ComponentSectionsOurServices: OurServices,
+  ComponentSectionsContactUs: ContactUs,
+  ComponentSectionsSolutions: SolutionsPage
 };
 
-const SectionRenderer = ({ section }: { section }) => {
+const SectionRenderer = ({ section }: { section: any }) => {
   const Component = componentMapping[section.__typename];
+  console.log(section.__typename);
 
   if (!Component) {
-    return <p>Component Not Found</p>;
+    return <p className="flex justify-center bg-gray-700 p-10 text-white">Component Not Found : Contact to developer</p>;
   }
 
   return <Component {...section} />;

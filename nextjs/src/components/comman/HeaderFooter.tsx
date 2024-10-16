@@ -95,7 +95,7 @@ export const HeaderFooter = ({ children }: LayoutProps) => {
                   );
                 })}
               </ul>
-              <p className="text-sm font-light text-white/45">{data?.global?.footer?.smallText}</p>
+              <p className="text-sm font-light text-white/45">{data?.cms?.global?.footer?.smallText}</p>
             </div>
           </div>
         </footer>

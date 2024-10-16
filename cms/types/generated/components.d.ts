@@ -247,8 +247,7 @@ export interface SectionsHomeCaseStudy extends Struct.ComponentSchema {
     title: Schema.Attribute.Text;
     description: Schema.Attribute.Text;
     case_study_btn: Schema.Attribute.Component<'links.button-link', false>;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -277,12 +276,12 @@ export interface SectionsHeroProductPage extends Struct.ComponentSchema {
   };
   attributes: {
     logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
     productImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
-    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    description: Schema.Attribute.RichText;
     button: Schema.Attribute.Component<'links.button-link', false>;
   };
 }
@@ -332,6 +331,7 @@ export interface SectionsContactUs extends Struct.ComponentSchema {
   collectionName: 'components_sections_contact_uses';
   info: {
     displayName: 'Contact Us';
+    description: '';
   };
   attributes: {
     title: Schema.Attribute.String;

@@ -19,7 +19,7 @@
     },
     "title": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "productImage": {
       "type": "media",
@@ -34,7 +34,7 @@
     },
     "description": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "button": {
       "type": "component",

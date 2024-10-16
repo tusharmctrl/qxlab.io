@@ -4,6 +4,7 @@ query StrapiPageData($slug: String!) {
       __typename
       documentId
       contentSections {
+        __typename
         ... on ComponentSectionsHero {
           __typename
           id
@@ -67,6 +68,49 @@ query StrapiPageData($slug: String!) {
           }
           description
           __typename
+        }
+        ... on ComponentSectionsOurServices {
+          id
+          title
+          description
+          services_cards {
+            id
+            name
+            icon {
+              url
+            }
+            description
+          }
+        }
+        ... on ComponentSectionsContactUs {
+          id
+          title
+          image {
+            url
+          }
+          contact_us_btn {
+            id
+            text
+            url
+          }
+        }
+        ... on ComponentSectionsSolutions {
+          id
+          title
+          description
+          title
+          solution_cards {
+            id
+            label {
+              url
+            }
+            image_position
+            solution_name
+            solution_description
+            solution_image {
+              url
+            }
+          }
         }
       }
     }

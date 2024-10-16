@@ -2,7 +2,7 @@ import { env } from "@/env.mjs";
 import Image from "next/image";
 import React from "react";
 
-export default function ProductInfo(data) {
+export default function ProductInfo(data: any) {
   return (
     <section className="mt-5 px-5 pt-10 xl:px-66px">
       <div className="relative space-y-7">
