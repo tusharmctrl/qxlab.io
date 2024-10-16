@@ -151,3 +151,15 @@ body{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.gradient-blue{
+  background: linear-gradient(90deg, #7B6BE5 0%, #6200EE 100%);
+  opacity: 0.2;
+}
+.gradient-marker{
+  background: linear-gradient(90deg, #FFD600 0%, #FFDF3B 100%);
+  opacity: 0.2;
+}
+.gradient-product{
+  background: linear-gradient(135deg, #0336FF 0%, #76C5EE 100%);
+  opacity: 0.2;
+}

@@ -32,10 +32,11 @@ const config: Config = {
         "40vmax": "40vmax",
         "13px": "13px",
         "18px": "18px",
-        
         "66px": "66px",
         "72px": "72px",
         "590px": "590px",
+        "300px": "300px",
+        "400px": "400px",
         "432px": "432px",
         "488px": "488px",
         "612px": "612px",
@@ -96,12 +97,14 @@ const config: Config = {
       backgroundPosition: {
         'center-right': 'center right',
       },
+      blur: {
+        '75px': '75px',
+      },
       boxShadow: {
         '3xl': '20px 4px 20px 16px rgb(48 57 63)',
         '5xl': '-20px -1px 20px 16px rgb(48 57 63)',
         'card': '0 2px 4px rgba(149,146,157,.15)',
         'card-hover': '0 5px 14px rgba(149,146,157,.15)',
-        
       }
     },
     backgroundImage: {

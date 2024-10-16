@@ -1,5 +1,12 @@
 import React from "react";
 import Qxlogo from "@/app/images/qx-labs.svg";
+import Okr from "@/app/images/okr-mapping.png";
+import Foshtech from "@/app/images/fosh-tech.png";
+import Dazn from "@/app/images/dazn.png";
+import Betfair from "@/app/images/betfair.png";
+import Igt from "@/app/images/igt.png";
+import Playtech from "@/app/images/playtech.png";
+import Markor from "@/app/images/markor.png";
 
 export default function page() {
   return (
@@ -59,57 +66,83 @@ export default function page() {
     </header>
     
     {/* Our Services */}
-    <div className="p-5 mt-24 pt-8">
+    <div className="p-5 mt-24 py-12 pb-8 md:pb-14 lg:pb-20">
       <div className="container">
-        <div className="flex items-center -mx-2 gap-3">
-          <div className="w-1/2 px-2">
-            <div className="space-y-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-28 xl:gap-36">
+          <div className="relative">
+            <div className="space-y-8">
               <span className="inline-flex rounded-3xl bg-white text-xs px-4 capitalize py-1.5">back</span>
               <h2 className="text-3xl md:text-5xl xl:text-6xl font-semibold  text-gradient-blue ">OKR MAPPING</h2>
               <div className="relative space-y-2">
-              <h6 className="text-base md:text-2xl font-semibold text-white ">The Ask</h6>
-              <p className="text-cultured italic font-medium text-sm">Create a company-wide and functionally specific OKR programme</p>
+                <h6 className="text-base md:text-2xl font-semibold text-white ">The Ask</h6>
+                <p className="text-cultured italic font-semibold text-sm">Create a company-wide and functionally specific OKR programme</p>
+              </div>
+              <div className="relative space-y-2">
+                <h6 className="text-base md:text-2xl font-semibold text-white ">Activities</h6>
+                <p className="text-cultured font-semibold text-sm">Workshops to:</p>
+                <p className="text-cultured font-semibold text-sm">– Review research and insight on brand + market</p>
+                <p className="text-cultured font-semibold text-sm">- Co-create company and function OKRs – review, vote, align – align to measurement framework</p>
+                <p className="text-cultured font-semibold text-sm">– Set up of quarterly progress reviews</p>
+              </div>
+              <div className="relative space-y-2">
+                <h6 className="text-base md:text-2xl font-semibold text-white ">Outputs</h6>
+                <p className="text-cultured font-semibold text-sm">– Populated OKR matrix</p>
+                <p className="text-cultured font-semibold text-sm">– Ownerships and accountability of metrics</p>
+                <p className="text-cultured font-semibold text-sm">– Template to track and report on targets</p>
+                <p className="text-cultured font-semibold text-sm">– Company wide forum to review each Q</p>
               </div>
             </div>
+            </div>
+            <div className="relative">
+              <div className="blur-75px w-300px h-300px z-0 md:w-400px md:h-400px absolute right-20 -top-10 isolate pointer-events-none opacity-35 animation-svgs">
+              <svg className="w-full h-full" width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <circle cx="32.5" cy="32.5" r="32.5" fill="url(#paint_1f3bd0c7)"></circle>
+                  <defs>
+                    <linearGradient id="paint_1f3bd0c7" x1="0" y1="0" x2="65" y2="65" gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-color="#6E51E7">
+                        <animate attributeName="stop-color" values="#6E51E7;#E7C0E4;#5372FF;" dur="18s" repeatCount="indefinite"></animate>
+                      </stop>
+                      <stop offset="1" stop-color="#B270EB">
+                        <animate attributeName="stop-color" values="#B270EB;" dur="14s" repeatCount="indefinite"></animate>
+                      </stop>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            <div className="rounded-xl z-10 relative overflow-hidden ">
+                  <img src={Okr.src} className="w-full" alt="Okr"/>
+                </div>
             </div>
         </div>
         
       </div>
     </div>
-    {/* Our Services list */}
-    <div className=" pt-7 md:pt-10 pb-16 md:pb-28 xl:pb-36 ">
-      <div className="border-y-0.5px px-5 py-10 xl:pt-10 xl:pb-16 border-slate-800/45">
-          <div className="max-w-2xl mx-auto space-y-5 md:space-y-7">
-            <div className="space-y-6">
-              <span className="badges-gradient inline-block text-sm px-4 py-1 text-white rounded-md">
-                  Our Mission
-              </span>
-              <h2 className="text-base md:text-xl font-medium text-cultured">Introducing QXLab.</h2>
-            </div>
-            <p className="text-base md:text-xl font-medium text-cultured">Customer Experience (CX) is a multifaceted concept, one that means a lot of different things to a lot of different people.</p>
-            <p className="text-base md:text-xl font-medium text-cultured">At it’s core, CX is an enablement expertise.</p>
-            <p className="text-base md:text-xl font-medium text-cultured">The fundamental mission of any CX team is to empower a business to make more informed and impactful decisions, all while keeping the customer as the focal point of that decision making process.</p>
-            <p className="text-base md:text-xl font-medium text-cultured">Traditionally, CX has been approached from two angles:</p>
-            <p className="text-base md:text-xl font-medium text-waterspout">1. Assessing an organisations ability to deliver quality experiences (inputs)</p>
-            <p className="text-base md:text-xl font-medium text-waterspout">2. Improving the quality of those experiences (outputs).</p>
-            <p className="text-base md:text-xl font-medium text-cultured">Both of which have been measured via outdated, manual and costly methodologies.</p>
-            <p className="text-base md:text-xl font-medium text-cultured">QXLab has been created to revolutionize this paradigm.</p>
-          </div>
-          <div className="max-w-2xl mx-auto space-y-5 md:space-y-7 mt-8 md:mt-24 xl:mt-32">
-            <div className="space-y-6">
-              <span className="badges-gradient inline-block text-sm px-4 py-1 text-white rounded-md">
-              Our Background
-              </span>
-              <h2 className="text-base md:text-xl font-medium text-cultured">We have unique, comprehensive and leading backgrounds in Digital Customer Experience.</h2>
-            </div>
-            <p className="text-base md:text-xl font-medium text-cultured">We have worked within some of the world's biggest companies, with experience in-house, at agencies and in start-ups.</p>
-            <p className="text-base md:text-xl font-medium text-cultured">We have developed tried and tested approaches to Digital CX that are proven to work, across multiple industries. We are commercial operators responsible for £10s-of-millions in increased revenues.</p>
-            <p className="text-base md:text-xl font-medium text-cultured">We have led large, international teams in the definition, design, development and improvement of multiple sites and apps.</p>
-            <p className="text-base md:text-xl font-medium text-cultured">Our expertise is focused on defining appropriate, pragmatic and measurably effective CX programmes for leading digital companies.</p>
-           
-          </div>
+   {/* logo-animation */}
+   <div className="py-6 md:p-8 lg:p-12   ">
+    <div className="container overflow-hidden marquee-wrapper  before:w-0 after:w-0 before:-left-12 after:-right-12 md:after:right-0 md:before:left-0 be md:before:w-7 md:after:w-7 md:before:-top-4 before:top-0 after:top-0 md:after:-top-4 before:h-12 after:h-12 md:after:h-16 md:before:h-16 relative">
+      <div className="qx-marquee " >
+        <ul className="flex items-center">
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Foshtech.src} alt="foshtech"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-12" src={Dazn.src} alt="dazn"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Betfair.src} alt="Betfair"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Igt.src} alt="Igt"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Playtech.src} alt="Playtech"/></li>
+          <li className="mx-5 md:mx-10 lg:mx-12 cursor-pointer inline-block whitespace-nowrap min-w-14 md:min-w-20 lg:min-w-28"><img className="w-20" src={Markor.src} alt="Markor"/></li>
+        </ul>
       </div>
-      
+      </div>
     </div>
     
     <footer className="bg-charleston-green/50 py-12 lg:py-20 px-5">
