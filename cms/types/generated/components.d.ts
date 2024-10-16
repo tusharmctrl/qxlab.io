@@ -500,6 +500,35 @@ export interface LinksButtonLink extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutNavbar extends Struct.ComponentSchema {
+  collectionName: 'components_layout_navbars';
+  info: {
+    name: 'Navbar';
+    displayName: 'Navbar';
+    icon: 'map-signs';
+    description: '';
+  };
+  attributes: {
+    links: Schema.Attribute.Component<'links.link', true>;
+    button: Schema.Attribute.Component<'links.button-link', false>;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+  };
+}
+
+export interface LayoutFooter extends Struct.ComponentSchema {
+  collectionName: 'components_layout_footers';
+  info: {
+    name: 'Footer';
+    displayName: 'Footer';
+    icon: 'caret-square-down';
+  };
+  attributes: {
+    logo: Schema.Attribute.Media<'images'>;
+    columns: Schema.Attribute.Component<'elements.footer-section', true>;
+    smallText: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsTestimonial extends Struct.ComponentSchema {
   collectionName: 'components_slices_testimonials';
   info: {
@@ -628,35 +657,6 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
   };
 }
 
-export interface LayoutNavbar extends Struct.ComponentSchema {
-  collectionName: 'components_layout_navbars';
-  info: {
-    name: 'Navbar';
-    displayName: 'Navbar';
-    icon: 'map-signs';
-    description: '';
-  };
-  attributes: {
-    links: Schema.Attribute.Component<'links.link', true>;
-    button: Schema.Attribute.Component<'links.button-link', false>;
-    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-  };
-}
-
-export interface LayoutFooter extends Struct.ComponentSchema {
-  collectionName: 'components_layout_footers';
-  info: {
-    name: 'Footer';
-    displayName: 'Footer';
-    icon: 'caret-square-down';
-  };
-  attributes: {
-    logo: Schema.Attribute.Media<'images'>;
-    columns: Schema.Attribute.Component<'elements.footer-section', true>;
-    smallText: Schema.Attribute.String;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -696,6 +696,8 @@ declare module '@strapi/strapi' {
       'links.link': LinksLink;
       'links.button': LinksButton;
       'links.button-link': LinksButtonLink;
+      'layout.navbar': LayoutNavbar;
+      'layout.footer': LayoutFooter;
       'elements.testimonial': ElementsTestimonial;
       'elements.social-media-name': ElementsSocialMediaName;
       'elements.plan': ElementsPlan;
@@ -705,8 +707,6 @@ declare module '@strapi/strapi' {
       'elements.feature': ElementsFeature;
       'elements.feature-row': ElementsFeatureRow;
       'elements.feature-column': ElementsFeatureColumn;
-      'layout.navbar': LayoutNavbar;
-      'layout.footer': LayoutFooter;
     }
   }
 }

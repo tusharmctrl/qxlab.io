@@ -56,6 +56,18 @@ query StrapiPageData($slug: String!) {
             }
           }
         }
+        ... on ComponentSectionsServiceHero {
+          title
+          button {
+            id
+            newTab
+            text
+            type
+            url
+          }
+          description
+          __typename
+        }
       }
     }
   }
