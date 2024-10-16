@@ -106,6 +106,7 @@ export interface SectionsServiceHero extends Struct.ComponentSchema {
     title: Schema.Attribute.String;
     description: Schema.Attribute.Text;
     button: Schema.Attribute.Component<'links.button-link', false>;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 

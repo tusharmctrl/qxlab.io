@@ -107,23 +107,21 @@ body {
   -ms-filter: blur(140px);
   filter: blur(140px);
 }
-/* .qx-marquee { */
-/* display: inline-block; */
-/* white-space: nowrap; */
-/* position: relative; */
-/* transform: translate3d(0%, 0, 0); */
-/* animation-name: marquee; */
-/* animation-timing-function: linear; */
-/* animation-iteration-count: infinite; */
-/* animation-duration: 27s; */
-/* } */
-.qx-marquee ul {
-  -webkit-animation: marquee 30s linear infinite running;
-  -moz-animation: marquee 30s linear infinite running;
-  -o-animation: marquee 30s linear infinite running;
-  -ms-animation: marquee 30s linear infinite running;
-  animation: marquee 30s linear infinite running;
+
+.marquee-wrapper {
+  @apply before:shadow-3xl before:absolute before:-left-1 before:top-4 before:z-10 before:h-12 before:w-6 before:bg-crayola before:content-[''] md:before:left-0 md:before:h-24 md:before:w-14 xl:before:w-16;
 }
+.marquee-wrapper {
+  @apply after:shadow-5xl after:absolute after:-right-1 after:top-4 after:z-10 after:h-12 after:w-6 after:bg-crayola after:content-[''] md:after:right-0 md:after:h-24 md:after:w-14 xl:after:w-16;
+}
+.qx-marquee ul {
+  -webkit-animation: marquee 50s linear infinite running;
+  -moz-animation: marquee 50s linear infinite running;
+  -o-animation: marquee 50s linear infinite running;
+  -ms-animation: marquee 50s linear infinite running;
+  animation: marquee 50s linear infinite running;
+}
+
 .qx-marquee ul:hover {
   -webkit-animation-play-state: paused;
   -moz-animation-play-state: paused;
@@ -161,4 +159,59 @@ body {
   100% {
     transform: translate3d(-100%, 0, 0);
   }
+}
+
+.text-gradient {
+  background: linear-gradient(360deg, #f89d35 0%, #f86058 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-style {
+  background: linear-gradient(180deg, #8c51d53a 0%, #46296b3a 100%);
+}
+.gradient-style-one {
+  background: linear-gradient(180deg, #cdb96733 0%, #675d3433 100%);
+}
+.gradient-colors {
+  background: linear-gradient(90deg, #f1776f 0%, #dbc28a 51.39%, #54c0bd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient .main-title {
+  background: linear-gradient(180deg, rgba(177, 86, 171, 1) 25%, rgba(30, 196, 196, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.main-title {
+  background: linear-gradient(180deg, rgba(177, 86, 171, 1) 25%, rgba(30, 196, 196, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+.badges-gradient {
+  background: linear-gradient(200deg, #a5ffed 0%, #28928f 100%);
+}
+.overlay-slk {
+  transition: opacity 1s;
+}
+.text-gradient-blue {
+  background: linear-gradient(360deg, #8d65e9 0%, #9bdff9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-blue {
+  background: linear-gradient(90deg, #7b6be5 0%, #6200ee 100%);
+  opacity: 0.2;
+}
+.gradient-marker {
+  background: linear-gradient(90deg, #ffd600 0%, #ffdf3b 100%);
+  opacity: 0.2;
+}
+.gradient-product {
+  background: linear-gradient(135deg, #0336ff 0%, #76c5ee 100%);
+  opacity: 0.2;
 }
