@@ -7,6 +7,7 @@ query StrapiPageData($slug: String!) {
         documentId
         title
         date
+        slug
         blog_content
         author {
           name
@@ -236,6 +237,19 @@ query StrapiPageData($slug: String!) {
             }
           }
         }
+      }
+    }
+    blogs(filters: { slug: { eq: $slug } }) {
+      documentId
+      title
+      date
+      slug
+      blog_content
+      author {
+        name
+      }
+      blog_tags {
+        tag_name
       }
     }
   }

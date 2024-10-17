@@ -38,6 +38,9 @@
     },
     "blog_content": {
       "type": "richtext"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }

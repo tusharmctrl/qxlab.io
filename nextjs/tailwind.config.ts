@@ -147,7 +147,7 @@ export default {
         card: "0 2px 4px rgba(149,146,157,.15)",
         "card-hover": "0 5px 14px rgba(149,146,157,.15)"
       },
-      "blog-pattern": "url('./images/blog-detail.png')",
+
       keyframes: {
         marquee: {
           from: {
@@ -172,7 +172,8 @@ export default {
       }
     },
     backgroundImage: {
-      "hero-pattern": "url('/images/man-qx-bg.png')"
+      "hero-pattern": "url('/images/man-qx-bg.png')",
+      "blog-pattern": "url('/images/blog-detail.png')"
     }
   },
   plugins: [require("tailwindcss-animate")]

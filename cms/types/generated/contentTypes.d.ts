@@ -531,6 +531,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     >;
     page: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>;
     blog_content: Schema.Attribute.RichText;
+    slug: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

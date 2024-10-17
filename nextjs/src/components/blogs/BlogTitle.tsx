@@ -1,11 +1,11 @@
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 export function BlogTitle(data: any) {
   const router = useRouter();
 
-  const handleClick = (id: string) => {
-    router.push(`/blogs/${id}`);
+  const handleClick = (slug: string) => {
+    router.push(slug);
   };
   return (
     <>
@@ -21,7 +21,7 @@ export function BlogTitle(data: any) {
           <div className="container">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
               {data?.blogs.map((blog: any, index: number) => (
-                <div className="cursor-pointer space-y-4 rounded-2xl bg-white p-5" onClick={() => handleClick(blog.documentId)}>
+                <div className="cursor-pointer space-y-4 rounded-2xl bg-white p-5" onClick={() => handleClick(blog?.slug ?? "")}>
                   <div className="my-2 flex items-center gap-3">
                     <p className="text-xs text-hex-black">{blog?.author?.name}</p>
                     <img src="/images/dots.svg" className="w-2" alt="Dots" />

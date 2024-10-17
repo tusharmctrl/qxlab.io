@@ -1,6 +1,10 @@
 import React from "react";
 import Marquee from "../ui/marquee";
 import { MarqueeLogos } from "../comman/MarqueeLogos";
+import { CoolMode } from "../ui/cool-mode";
+import { Button } from "../ui/button";
+import BlurFade from "../ui/blur-fade";
+import HyperText from "../ui/hyper-text";
 
 const logos = [
   {
@@ -29,26 +33,36 @@ export default function HeroSection(data: any) {
       <div className="container z-10 w-full">
         <div className="flex w-full">
           <div className="max-w-2xl space-y-5 md:space-y-8">
-            <h1 className="text-5xl font-semibold leading-1.08em text-white md:text-6xl lg:text-8xl">
+            <h1 className="text-4xl font-semibold leading-1.08em text-white md:text-5xl lg:text-6xl">
               {/* Generate your QXi Score <span className="text-waterspout">Today</span> */}
               {data?.title}
             </h1>
-            <div className="max-w-md">
-              <p className="text-xl font-normal text-cultured">
-                <span className="mr-2 inline-block">
-                  <img src="/images/rocket.svg" className="h-5 w-5" alt="rocket" />
-                </span>
-                {/* Welcome to QX Lab: Revolutionizing the Customer Experience industry with AI-Powered Innovation! */}
-                {data?.description}
-              </p>
-            </div>
-            <button className="rounded-lg bg-pastel-green px-4 py-3 text-sm font-semibold text-cultured md:px-5 md:py-3.5 md:text-base">
-              {data?.buttons[0]?.text}
-            </button>
+            <BlurFade delay={1} inView>
+              <div className="max-w-md">
+                <p className="text-xl font-normal text-cultured">
+                  <span className="mr-2 inline-block">
+                    <img src="/images/rocket.svg" className="h-5 w-5" alt="rocket" />
+                  </span>
+                  {/* Welcome to QX Lab: Revolutionizing the Customer Experience industry with AI-Powered Innovation! */}
+                  {data?.description}
+                </p>
+              </div>
+            </BlurFade>
+            <CoolMode
+              options={{
+                particle: "/images/rocket.svg",
+                size: 50,
+                speedUp: 20
+              }}
+            >
+              <Button className="rounded-lg bg-pastel-green px-4 py-3 text-sm font-semibold text-cultured md:px-5 md:py-3.5 md:text-base">
+                {data?.buttons[0]?.text}
+              </Button>
+            </CoolMode>
           </div>
         </div>
       </div>
-      <Marquee pauseOnHover className="container py-10 [--duration:20s]">
+      <Marquee pauseOnHover className="container pt-10 [--duration:20s]">
         {logos.map((logo, index) => (
           <MarqueeLogos key={index} {...logo} />
         ))}

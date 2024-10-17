@@ -2,6 +2,7 @@ import React from "react";
 import Qxi from "@/../public/images/qxi.svg";
 import Image from "next/image";
 import { env } from "@/env.mjs";
+import BlurFade from "../ui/blur-fade";
 export default function ProductHeroSection(data: any) {
   const renderContent = (description: any) => {
     const sections = description.split("\n");
@@ -30,14 +31,15 @@ export default function ProductHeroSection(data: any) {
             </div>
             <p className="text-center text-base font-semibold text-white">{data?.title}</p>
           </div>
-
-          <Image
-            src={data?.productImage?.url ? `${env.NEXT_PUBLIC_STRAPI_URL}${data?.productImage?.url}` : "/images/product-img.png"}
-            alt="Qxiimage"
-            className="mx-auto"
-            width={700}
-            height={500}
-          />
+          <BlurFade delay={1} inView>
+            <Image
+              src={data?.productImage?.url ? `${env.NEXT_PUBLIC_STRAPI_URL}${data?.productImage?.url}` : "/images/product-img.png"}
+              alt="Qxiimage"
+              className="mx-auto"
+              width={700}
+              height={500}
+            />
+          </BlurFade>
           <div className="!mt-6">{renderContent(data?.description)}</div>
           <div className="!mt-5 text-center">
             <button className="scale-100 rounded-lg bg-pastel-green px-4 py-3 text-sm font-semibold text-cultured transition-all duration-300 hover:scale-110 md:px-6 md:py-3.5 md:text-base">

@@ -1,24 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface MetaMetadata extends Struct.ComponentSchema {
-  collectionName: 'components_meta_metadata';
-  info: {
-    name: 'Metadata';
-    displayName: 'Metadata';
-    icon: 'robot';
-  };
-  attributes: {
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
-    twitterCardType: Schema.Attribute.Enumeration<
-      ['summary', 'summary_large_image', 'app', 'player']
-    > &
-      Schema.Attribute.DefaultTo<'summary'>;
-    twitterUsername: Schema.Attribute.String;
-  };
-}
-
 export interface SectionsTitle extends Struct.ComponentSchema {
   collectionName: 'components_sections_titles';
   info: {
@@ -440,6 +421,25 @@ export interface SectionsAboutSection extends Struct.ComponentSchema {
   };
 }
 
+export interface MetaMetadata extends Struct.ComponentSchema {
+  collectionName: 'components_meta_metadata';
+  info: {
+    name: 'Metadata';
+    displayName: 'Metadata';
+    icon: 'robot';
+  };
+  attributes: {
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    shareImage: Schema.Attribute.Media<'images'>;
+    twitterCardType: Schema.Attribute.Enumeration<
+      ['summary', 'summary_large_image', 'app', 'player']
+    > &
+      Schema.Attribute.DefaultTo<'summary'>;
+    twitterUsername: Schema.Attribute.String;
+  };
+}
+
 export interface LinksSublinks extends Struct.ComponentSchema {
   collectionName: 'components_links_sublinks';
   info: {
@@ -660,7 +660,6 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'meta.metadata': MetaMetadata;
       'sections.title': SectionsTitle;
       'sections.testimonials-group': SectionsTestimonialsGroup;
       'sections.test': SectionsTest;
@@ -692,6 +691,7 @@ declare module '@strapi/strapi' {
       'sections.blog': SectionsBlog;
       'sections.about-us': SectionsAboutUs;
       'sections.about-section': SectionsAboutSection;
+      'meta.metadata': MetaMetadata;
       'links.sublinks': LinksSublinks;
       'links.link': LinksLink;
       'links.button': LinksButton;

@@ -15,6 +15,7 @@ import ComingSoonSection from "../product/ComingSoonSection";
 import AboutUs from "../about/AboutUs";
 import { BlogLinks, BlogTitle } from "../blogs/BlogTitle";
 import CaseStudies from "../case-studies/CaseStudies";
+import BlogDetails from "../blogs/BlogDetails";
 
 const componentMapping: Record<string, FC<React.JSX.Element>> = {
   ComponentSectionsHero: HeroSection,
@@ -31,6 +32,7 @@ const componentMapping: Record<string, FC<React.JSX.Element>> = {
   ComponentSectionsProductComingHero: ComingSoonSection,
   ComponentSectionsAboutUs: AboutUs,
   ComponentSectionsBlog: BlogTitle,
+  Blog: BlogDetails,
   ComponentSectionsSocialMediaLinks: BlogLinks,
   ComponentSectionsTitle: CaseStudies
 };
