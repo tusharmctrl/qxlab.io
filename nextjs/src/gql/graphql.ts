@@ -2817,6 +2817,29 @@ export type StrapiPageDataQuery = { __typename?: "query_root" } & {
       pages: Array<
         Maybe<
           { __typename: "Page" } & Pick<Page, "documentId"> & {
+              blogs: Array<
+                Maybe<
+                  { __typename?: "Blog" } & Pick<Blog, "documentId" | "title" | "date" | "blog_content"> & {
+                      author?: Maybe<{ __typename?: "Author" } & Pick<Author, "name">>;
+                      blog_tags: Array<Maybe<{ __typename?: "BlogTag" } & Pick<BlogTag, "tag_name">>>;
+                    }
+                >
+              >;
+              categories: Array<
+                Maybe<
+                  { __typename?: "Category" } & Pick<Category, "documentId" | "name"> & {
+                      case_studies: Array<
+                        Maybe<
+                          { __typename?: "CaseStudy" } & Pick<CaseStudy, "documentId" | "title"> & {
+                              casestudy?: Maybe<
+                                { __typename?: "ComponentSectionsCaseStudyDetails" } & Pick<ComponentSectionsCaseStudyDetails, "id" | "details">
+                              >;
+                            }
+                        >
+                      >;
+                    }
+                >
+              >;
               contentSections?: Maybe<
                 Array<
                   Maybe<
@@ -2837,8 +2860,16 @@ export type StrapiPageDataQuery = { __typename?: "query_root" } & {
                     | { __typename: "ComponentLinksSublinks" }
                     | { __typename: "ComponentMetaMetadata" }
                     | { __typename: "ComponentSectionsAboutSection" }
-                    | { __typename: "ComponentSectionsAboutUs" }
-                    | { __typename: "ComponentSectionsBlog" }
+                    | ({ __typename: "ComponentSectionsAboutUs" } & Pick<ComponentSectionsAboutUs, "id" | "title" | "description"> & {
+                          about_section?: Maybe<
+                            Array<
+                              Maybe<
+                                { __typename?: "ComponentSectionsAboutSection" } & Pick<ComponentSectionsAboutSection, "id" | "label" | "section_description">
+                              >
+                            >
+                          >;
+                        })
+                    | ({ __typename: "ComponentSectionsBlog" } & Pick<ComponentSectionsBlog, "id" | "title">)
                     | { __typename: "ComponentSectionsBottomActions" }
                     | { __typename: "ComponentSectionsCard" }
                     | ({ __typename: "ComponentSectionsCardCollection" } & Pick<ComponentSectionsCardCollection, "id"> & {
@@ -2946,7 +2977,17 @@ export type StrapiPageDataQuery = { __typename?: "query_root" } & {
                           >;
                         })
                     | { __typename: "ComponentSectionsServicesCard" }
-                    | { __typename: "ComponentSectionsSocialMediaLinks" }
+                    | ({ __typename: "ComponentSectionsSocialMediaLinks" } & {
+                        social_media_name?: Maybe<
+                          Array<
+                            Maybe<
+                              { __typename?: "ComponentElementsSocialMediaName" } & Pick<ComponentElementsSocialMediaName, "id" | "name"> & {
+                                  icon?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url">>;
+                                }
+                            >
+                          >
+                        >;
+                      })
                     | { __typename: "ComponentSectionsSolutionCard" }
                     | ({ __typename: "ComponentSectionsSolutions" } & Pick<ComponentSectionsSolutions, "id" | "title" | "description"> & {
                           solution_cards?: Maybe<
@@ -3039,6 +3080,30 @@ export const StrapiPageDataDocument = gql`
       pages(filters: { slug: { eq: $slug } }) {
         __typename
         documentId
+        blogs {
+          documentId
+          title
+          date
+          blog_content
+          author {
+            name
+          }
+          blog_tags {
+            tag_name
+          }
+        }
+        categories {
+          documentId
+          name
+          case_studies {
+            documentId
+            title
+            casestudy {
+              id
+              details
+            }
+          }
+        }
         contentSections {
           __typename
           ... on ComponentSectionsHero {
@@ -3148,6 +3213,7 @@ export const StrapiPageDataDocument = gql`
               }
             }
           }
+<<<<<<< HEAD
           ... on ComponentSectionsHeroProductPage {
             id
             logo {
@@ -3223,6 +3289,29 @@ export const StrapiPageDataDocument = gql`
               url
               type
               newTab
+=======
+          ... on ComponentSectionsAboutUs {
+            id
+            title
+            description
+            about_section {
+              id
+              label
+              section_description
+            }
+          }
+          ... on ComponentSectionsBlog {
+            id
+            title
+          }
+          ... on ComponentSectionsSocialMediaLinks {
+            social_media_name {
+              id
+              name
+              icon {
+                url
+              }
+>>>>>>> a084024 (feat: Add About, Blogs, Case Studies pages)
             }
           }
         }
@@ -3293,6 +3382,30 @@ export const StrapiPageData = gql`
       pages(filters: { slug: { eq: $slug } }) {
         __typename
         documentId
+        blogs {
+          documentId
+          title
+          date
+          blog_content
+          author {
+            name
+          }
+          blog_tags {
+            tag_name
+          }
+        }
+        categories {
+          documentId
+          name
+          case_studies {
+            documentId
+            title
+            casestudy {
+              id
+              details
+            }
+          }
+        }
         contentSections {
           __typename
           ... on ComponentSectionsHero {
@@ -3402,6 +3515,7 @@ export const StrapiPageData = gql`
               }
             }
           }
+<<<<<<< HEAD
           ... on ComponentSectionsHeroProductPage {
             id
             logo {
@@ -3477,6 +3591,29 @@ export const StrapiPageData = gql`
               url
               type
               newTab
+=======
+          ... on ComponentSectionsAboutUs {
+            id
+            title
+            description
+            about_section {
+              id
+              label
+              section_description
+            }
+          }
+          ... on ComponentSectionsBlog {
+            id
+            title
+          }
+          ... on ComponentSectionsSocialMediaLinks {
+            social_media_name {
+              id
+              name
+              icon {
+                url
+              }
+>>>>>>> a084024 (feat: Add About, Blogs, Case Studies pages)
             }
           }
         }

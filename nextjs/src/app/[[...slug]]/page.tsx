@@ -11,6 +11,11 @@ export default function page({ params }: { params: { slug: string[] } }) {
     variables: { slug: slug ? `/${slug?.join("/")}` : "/" },
     requestPolicy: "cache-first"
   });
-
-  return <>{data?.cms?.pages?.[0]?.contentSections?.map((section, index) => <SectionRenderer key={index} section={section} />)}</>;
+  const blogs = data?.cms?.pages?.[0]?.blogs;
+  const categories = data?.cms?.pages?.[0]?.categories;
+  return (
+    <>
+      {data?.cms?.pages?.[0]?.contentSections?.map((section, index) => <SectionRenderer key={index} section={section} blogs={blogs} categories={categories} />)}
+    </>
+  );
 }

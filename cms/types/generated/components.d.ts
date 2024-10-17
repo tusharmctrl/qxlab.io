@@ -1,5 +1,24 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface MetaMetadata extends Struct.ComponentSchema {
+  collectionName: 'components_meta_metadata';
+  info: {
+    name: 'Metadata';
+    displayName: 'Metadata';
+    icon: 'robot';
+  };
+  attributes: {
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    shareImage: Schema.Attribute.Media<'images'>;
+    twitterCardType: Schema.Attribute.Enumeration<
+      ['summary', 'summary_large_image', 'app', 'player']
+    > &
+      Schema.Attribute.DefaultTo<'summary'>;
+    twitterUsername: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsTitle extends Struct.ComponentSchema {
   collectionName: 'components_sections_titles';
   info: {
@@ -129,7 +148,7 @@ export interface SectionsProductWorks extends Struct.ComponentSchema {
     description: '';
   };
   attributes: {
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
     howItWorks: Schema.Attribute.Component<'sections.product-how-works', false>;
   };
 }
@@ -141,10 +160,7 @@ export interface SectionsProductHowWorks extends Struct.ComponentSchema {
     description: '';
   };
   attributes: {
-    image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     worksFeature: Schema.Attribute.Component<
       'sections.feature-columns-group',
       false
@@ -156,10 +172,10 @@ export interface SectionsProductComingHero extends Struct.ComponentSchema {
   collectionName: 'components_sections_product_coming_heroes';
   info: {
     displayName: 'product coming hero';
+    description: '';
   };
   attributes: {
-    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.Required;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     description: Schema.Attribute.Text;
     button: Schema.Attribute.Component<'links.button-link', false>;
   };
@@ -315,6 +331,7 @@ export interface SectionsFaq extends Struct.ComponentSchema {
   collectionName: 'components_sections_faqs';
   info: {
     displayName: 'FAQ';
+    description: '';
   };
   attributes: {
     title: Schema.Attribute.String;
@@ -420,25 +437,6 @@ export interface SectionsAboutSection extends Struct.ComponentSchema {
     title: Schema.Attribute.String;
     label: Schema.Attribute.String;
     section_description: Schema.Attribute.RichText;
-  };
-}
-
-export interface MetaMetadata extends Struct.ComponentSchema {
-  collectionName: 'components_meta_metadata';
-  info: {
-    name: 'Metadata';
-    displayName: 'Metadata';
-    icon: 'robot';
-  };
-  attributes: {
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
-    twitterCardType: Schema.Attribute.Enumeration<
-      ['summary', 'summary_large_image', 'app', 'player']
-    > &
-      Schema.Attribute.DefaultTo<'summary'>;
-    twitterUsername: Schema.Attribute.String;
   };
 }
 
@@ -653,14 +651,16 @@ export interface ElementsFeatureColumn extends Struct.ComponentSchema {
     description: '';
   };
   attributes: {
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
     description: Schema.Attribute.Text;
+    arrow: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'meta.metadata': MetaMetadata;
       'sections.title': SectionsTitle;
       'sections.testimonials-group': SectionsTestimonialsGroup;
       'sections.test': SectionsTest;
@@ -692,7 +692,6 @@ declare module '@strapi/strapi' {
       'sections.blog': SectionsBlog;
       'sections.about-us': SectionsAboutUs;
       'sections.about-section': SectionsAboutSection;
-      'meta.metadata': MetaMetadata;
       'links.sublinks': LinksSublinks;
       'links.link': LinksLink;
       'links.button': LinksButton;

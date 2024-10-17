@@ -524,13 +524,13 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   attributes: {
     title: Schema.Attribute.String;
     date: Schema.Attribute.Date;
-    blog_content_block: Schema.Attribute.Blocks;
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     blog_tags: Schema.Attribute.Relation<
       'manyToMany',
       'api::blog-tag.blog-tag'
     >;
     page: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>;
+    blog_content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

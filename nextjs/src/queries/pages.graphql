@@ -3,6 +3,30 @@ query StrapiPageData($slug: String!) {
     pages(filters: { slug: { eq: $slug } }) {
       __typename
       documentId
+      blogs {
+        documentId
+        title
+        date
+        blog_content
+        author {
+          name
+        }
+        blog_tags {
+          tag_name
+        }
+      }
+      categories {
+        documentId
+        name
+        case_studies {
+          documentId
+          title
+          casestudy {
+            id
+            details
+          }
+        }
+      }
       contentSections {
         __typename
         ... on ComponentSectionsHero {
@@ -112,6 +136,7 @@ query StrapiPageData($slug: String!) {
             }
           }
         }
+<<<<<<< HEAD
         ... on ComponentSectionsHeroProductPage {
           id
           logo {
@@ -187,6 +212,29 @@ query StrapiPageData($slug: String!) {
             url
             type
             newTab
+=======
+        ... on ComponentSectionsAboutUs {
+          id
+          title
+          description
+          about_section {
+            id
+            label
+            section_description
+          }
+        }
+        ... on ComponentSectionsBlog {
+          id
+          title
+        }
+        ... on ComponentSectionsSocialMediaLinks {
+          social_media_name {
+            id
+            name
+            icon {
+              url
+            }
+>>>>>>> a084024 (feat: Add About, Blogs, Case Studies pages)
           }
         }
       }

@@ -18,9 +18,6 @@
     "date": {
       "type": "date"
     },
-    "blog_content_block": {
-      "type": "blocks"
-    },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
@@ -38,6 +35,9 @@
       "relation": "manyToOne",
       "target": "api::page.page",
       "inversedBy": "blogs"
+    },
+    "blog_content": {
+      "type": "richtext"
     }
   }
 }

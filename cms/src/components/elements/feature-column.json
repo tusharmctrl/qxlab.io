@@ -10,10 +10,20 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "text"
+    },
+    "arrow": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
