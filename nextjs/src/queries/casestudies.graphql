@@ -1,0 +1,15 @@
+query CaseStudyData($documentId: ID!) {
+  cms {
+    caseStudies(filters: { documentId: { eq: $documentId } }) {
+      title
+      casestudy {
+        id
+        details
+        image {
+          name
+          url
+        }
+      }
+    }
+  }
+}

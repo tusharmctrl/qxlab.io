@@ -4,7 +4,6 @@ import React, { useState } from "react";
 export default function CaseStudies(data: any) {
   const [caseStudy, setCaseStudy] = useState(data?.categories[0]?.case_studies);
   const router = useRouter();
-  console.log(data);
   return (
     <>
       <div className="mt-24 p-5 py-10 md:py-14">

@@ -2803,6 +2803,30 @@ export type Query_Root = {
   cms?: Maybe<CmsQuery>;
 };
 
+export type CaseStudyDataQueryVariables = Exact<{
+  documentId: Scalars['ID']['input'];
+}>;
+
+
+export type CaseStudyDataQuery = (
+  { __typename?: 'query_root' }
+  & { cms?: Maybe<(
+    { __typename?: 'cmsQuery' }
+    & { caseStudies: Array<Maybe<(
+      { __typename?: 'CaseStudy' }
+      & Pick<CaseStudy, 'title'>
+      & { casestudy?: Maybe<(
+        { __typename?: 'ComponentSectionsCaseStudyDetails' }
+        & Pick<ComponentSectionsCaseStudyDetails, 'id' | 'details'>
+        & { image?: Maybe<(
+          { __typename?: 'UploadFile' }
+          & Pick<UploadFile, 'name' | 'url'>
+        )> }
+      )> }
+    )>> }
+  )> }
+);
+
 export type GlobalDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3058,6 +3082,27 @@ export type StrapiPageDataQuery = (
 );
 
 
+export const CaseStudyDataDocument = gql`
+    query CaseStudyData($documentId: ID!) {
+  cms {
+    caseStudies(filters: {documentId: {eq: $documentId}}) {
+      title
+      casestudy {
+        id
+        details
+        image {
+          name
+          url
+        }
+      }
+    }
+  }
+}
+    `;
+
+export function useCaseStudyDataQuery(options: Omit<Urql.UseQueryArgs<CaseStudyDataQueryVariables>, 'query'>) {
+  return Urql.useQuery<CaseStudyDataQuery, CaseStudyDataQueryVariables>({ query: CaseStudyDataDocument, ...options });
+};
 export const GlobalDataDocument = gql`
     query GlobalData {
   cms {
@@ -3377,6 +3422,23 @@ export function useStrapiPageDataQuery(options: Omit<Urql.UseQueryArgs<StrapiPag
   return Urql.useQuery<StrapiPageDataQuery, StrapiPageDataQueryVariables>({ query: StrapiPageDataDocument, ...options });
 };
 
+export const CaseStudyData = gql`
+    query CaseStudyData($documentId: ID!) {
+  cms {
+    caseStudies(filters: {documentId: {eq: $documentId}}) {
+      title
+      casestudy {
+        id
+        details
+        image {
+          name
+          url
+        }
+      }
+    }
+  }
+}
+    `;
 export const GlobalData = gql`
     query GlobalData {
   cms {
