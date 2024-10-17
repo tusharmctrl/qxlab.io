@@ -112,6 +112,83 @@ query StrapiPageData($slug: String!) {
             }
           }
         }
+        ... on ComponentSectionsHeroProductPage {
+          id
+          logo {
+            name
+            url
+          }
+          title
+          productImage {
+            name
+            url
+          }
+          description
+          button {
+            text
+            id
+            newTab
+            url
+            type
+          }
+        }
+        ... on ComponentSectionsProductWorks {
+          id
+          title
+          howItWorks {
+            id
+            image {
+              name
+              url
+            }
+            worksFeature {
+              features {
+                id
+                title
+                description
+              }
+            }
+          }
+        }
+        ... on ComponentSectionsFaq {
+          __typename
+          id
+          title
+          upArrow {
+            url
+            name
+          }
+          downArrow {
+            url
+            name
+          }
+          faqList {
+            features {
+              id
+              arrow {
+                url
+                name
+              }
+              title
+              description
+            }
+          }
+        }
+        ... on ComponentSectionsProductComingHero {
+          id
+          logo {
+            url
+            name
+          }
+          description
+          button {
+            id
+            text
+            url
+            type
+            newTab
+          }
+        }
       }
     }
   }

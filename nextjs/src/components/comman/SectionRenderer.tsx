@@ -8,6 +8,10 @@ import { StrapiPageDataQuery } from "@/gql/graphql";
 import OurServices from "../services/OurServices";
 import ContactUs from "../services/ContactUs";
 import SolutionsPage from "../solutions/SolutionsPage";
+import ProductHeroSection from "../product/ProductHeroSection";
+import WorksSection from "../product/WorksSection";
+import FAQSection from "../product/FAQSection";
+import ComingSoonSection from "../product/ComingSoonSection";
 
 const componentMapping: Record<string, FC<React.JSX.Element>> = {
   ComponentSectionsHero: HeroSection,
@@ -17,7 +21,11 @@ const componentMapping: Record<string, FC<React.JSX.Element>> = {
   ComponentSectionsServiceHero: ServicePageHeroSection,
   ComponentSectionsOurServices: OurServices,
   ComponentSectionsContactUs: ContactUs,
-  ComponentSectionsSolutions: SolutionsPage
+  ComponentSectionsSolutions: SolutionsPage,
+  ComponentSectionsHeroProductPage: ProductHeroSection,
+  ComponentSectionsProductWorks: WorksSection,
+  ComponentSectionsFaq: FAQSection,
+  ComponentSectionsProductComingHero: ComingSoonSection
 };
 
 const SectionRenderer = ({ section }: { section: any }) => {

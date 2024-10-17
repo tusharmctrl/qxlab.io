@@ -95,7 +95,7 @@ export type AuthorRelationResponseCollection = {
 export type Blog = {
   __typename?: "Blog";
   author?: Maybe<Author>;
-  blog_content_block?: Maybe<Scalars["JSON"]["output"]>;
+  blog_content?: Maybe<Scalars["String"]["output"]>;
   blog_tags: Array<Maybe<BlogTag>>;
   blog_tags_connection?: Maybe<BlogTagRelationResponseCollection>;
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
@@ -143,7 +143,7 @@ export type BlogEntityResponseCollection = {
 export type BlogFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
   author?: InputMaybe<AuthorFiltersInput>;
-  blog_content_block?: InputMaybe<JsonFilterInput>;
+  blog_content?: InputMaybe<StringFilterInput>;
   blog_tags?: InputMaybe<BlogTagFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   date?: InputMaybe<DateFilterInput>;
@@ -160,7 +160,7 @@ export type BlogFiltersInput = {
 
 export type BlogInput = {
   author?: InputMaybe<Scalars["ID"]["input"]>;
-  blog_content_block?: InputMaybe<Scalars["JSON"]["input"]>;
+  blog_content?: InputMaybe<Scalars["String"]["input"]>;
   blog_tags?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
   date?: InputMaybe<Scalars["Date"]["input"]>;
   locale?: InputMaybe<Scalars["String"]["input"]>;
@@ -410,9 +410,10 @@ export type ComponentElementsFeature = {
 
 export type ComponentElementsFeatureColumn = {
   __typename?: "ComponentElementsFeatureColumn";
+  arrow?: Maybe<UploadFile>;
   description?: Maybe<Scalars["String"]["output"]>;
   id: Scalars["ID"]["output"];
-  title: Scalars["String"]["output"];
+  title?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type ComponentElementsFeatureColumnFiltersInput = {
@@ -964,34 +965,21 @@ export type ComponentSectionsProductComingHero = {
   button?: Maybe<ComponentLinksButtonLink>;
   description?: Maybe<Scalars["String"]["output"]>;
   id: Scalars["ID"]["output"];
-  logo: UploadFile;
+  logo?: Maybe<UploadFile>;
 };
 
 export type ComponentSectionsProductHowWorks = {
   __typename?: "ComponentSectionsProductHowWorks";
   id: Scalars["ID"]["output"];
-  image: Array<Maybe<UploadFile>>;
-  image_connection?: Maybe<UploadFileRelationResponseCollection>;
+  image?: Maybe<UploadFile>;
   worksFeature?: Maybe<ComponentSectionsFeatureColumnsGroup>;
-};
-
-export type ComponentSectionsProductHowWorksImageArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-};
-
-export type ComponentSectionsProductHowWorksImage_ConnectionArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
 
 export type ComponentSectionsProductWorks = {
   __typename?: "ComponentSectionsProductWorks";
   howItWorks?: Maybe<ComponentSectionsProductHowWorks>;
   id: Scalars["ID"]["output"];
-  title: Scalars["String"]["output"];
+  title?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type ComponentSectionsRichText = {
@@ -2869,7 +2857,23 @@ export type StrapiPageDataQuery = { __typename?: "query_root" } & {
                           image?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url">>;
                           contact_us_btn?: Maybe<{ __typename?: "ComponentLinksButtonLink" } & Pick<ComponentLinksButtonLink, "id" | "text" | "url">>;
                         })
-                    | { __typename: "ComponentSectionsFaq" }
+                    | ({ __typename: "ComponentSectionsFaq" } & Pick<ComponentSectionsFaq, "id" | "title"> & {
+                          upArrow?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url" | "name">>;
+                          downArrow?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url" | "name">>;
+                          faqList?: Maybe<
+                            { __typename?: "ComponentSectionsFeatureColumnsGroup" } & {
+                              features?: Maybe<
+                                Array<
+                                  Maybe<
+                                    { __typename?: "ComponentElementsFeatureColumn" } & Pick<ComponentElementsFeatureColumn, "id" | "title" | "description"> & {
+                                        arrow?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url" | "name">>;
+                                      }
+                                  >
+                                >
+                              >;
+                            }
+                          >;
+                        })
                     | { __typename: "ComponentSectionsFeatureColumnsGroup" }
                     | { __typename: "ComponentSectionsFeatureRowsGroup" }
                     | ({ __typename: "ComponentSectionsHero" } & Pick<ComponentSectionsHero, "id" | "title" | "label" | "description"> & {
@@ -2879,7 +2883,13 @@ export type StrapiPageDataQuery = { __typename?: "query_root" } & {
                             >
                           >;
                         })
-                    | { __typename: "ComponentSectionsHeroProductPage" }
+                    | ({ __typename: "ComponentSectionsHeroProductPage" } & Pick<ComponentSectionsHeroProductPage, "id" | "title" | "description"> & {
+                          logo?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "name" | "url">>;
+                          productImage: { __typename?: "UploadFile" } & Pick<UploadFile, "name" | "url">;
+                          button?: Maybe<
+                            { __typename?: "ComponentLinksButtonLink" } & Pick<ComponentLinksButtonLink, "text" | "id" | "newTab" | "url" | "type">
+                          >;
+                        })
                     | ({ __typename: "ComponentSectionsHomeCaseStudy" } & Pick<ComponentSectionsHomeCaseStudy, "id" | "title" | "description"> & {
                           case_study_btn?: Maybe<{ __typename?: "ComponentLinksButtonLink" } & Pick<ComponentLinksButtonLink, "id" | "text" | "type" | "url">>;
                           image?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url">>;
@@ -2901,9 +2911,34 @@ export type StrapiPageDataQuery = { __typename?: "query_root" } & {
                           >;
                         })
                     | { __typename: "ComponentSectionsPricing" }
-                    | { __typename: "ComponentSectionsProductComingHero" }
+                    | ({ __typename: "ComponentSectionsProductComingHero" } & Pick<ComponentSectionsProductComingHero, "id" | "description"> & {
+                          logo?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "url" | "name">>;
+                          button?: Maybe<
+                            { __typename?: "ComponentLinksButtonLink" } & Pick<ComponentLinksButtonLink, "id" | "text" | "url" | "type" | "newTab">
+                          >;
+                        })
                     | { __typename: "ComponentSectionsProductHowWorks" }
-                    | { __typename: "ComponentSectionsProductWorks" }
+                    | ({ __typename: "ComponentSectionsProductWorks" } & Pick<ComponentSectionsProductWorks, "id" | "title"> & {
+                          howItWorks?: Maybe<
+                            { __typename?: "ComponentSectionsProductHowWorks" } & Pick<ComponentSectionsProductHowWorks, "id"> & {
+                                image?: Maybe<{ __typename?: "UploadFile" } & Pick<UploadFile, "name" | "url">>;
+                                worksFeature?: Maybe<
+                                  { __typename?: "ComponentSectionsFeatureColumnsGroup" } & {
+                                    features?: Maybe<
+                                      Array<
+                                        Maybe<
+                                          { __typename?: "ComponentElementsFeatureColumn" } & Pick<
+                                            ComponentElementsFeatureColumn,
+                                            "id" | "title" | "description"
+                                          >
+                                        >
+                                      >
+                                    >;
+                                  }
+                                >;
+                              }
+                          >;
+                        })
                     | { __typename: "ComponentSectionsRichText" }
                     | ({ __typename: "ComponentSectionsServiceHero" } & Pick<ComponentSectionsServiceHero, "title" | "description"> & {
                           button?: Maybe<
@@ -3113,6 +3148,83 @@ export const StrapiPageDataDocument = gql`
               }
             }
           }
+          ... on ComponentSectionsHeroProductPage {
+            id
+            logo {
+              name
+              url
+            }
+            title
+            productImage {
+              name
+              url
+            }
+            description
+            button {
+              text
+              id
+              newTab
+              url
+              type
+            }
+          }
+          ... on ComponentSectionsProductWorks {
+            id
+            title
+            howItWorks {
+              id
+              image {
+                name
+                url
+              }
+              worksFeature {
+                features {
+                  id
+                  title
+                  description
+                }
+              }
+            }
+          }
+          ... on ComponentSectionsFaq {
+            __typename
+            id
+            title
+            upArrow {
+              url
+              name
+            }
+            downArrow {
+              url
+              name
+            }
+            faqList {
+              features {
+                id
+                arrow {
+                  url
+                  name
+                }
+                title
+                description
+              }
+            }
+          }
+          ... on ComponentSectionsProductComingHero {
+            id
+            logo {
+              url
+              name
+            }
+            description
+            button {
+              id
+              text
+              url
+              type
+              newTab
+            }
+          }
         }
       }
     }
@@ -3288,6 +3400,83 @@ export const StrapiPageData = gql`
               solution_image {
                 url
               }
+            }
+          }
+          ... on ComponentSectionsHeroProductPage {
+            id
+            logo {
+              name
+              url
+            }
+            title
+            productImage {
+              name
+              url
+            }
+            description
+            button {
+              text
+              id
+              newTab
+              url
+              type
+            }
+          }
+          ... on ComponentSectionsProductWorks {
+            id
+            title
+            howItWorks {
+              id
+              image {
+                name
+                url
+              }
+              worksFeature {
+                features {
+                  id
+                  title
+                  description
+                }
+              }
+            }
+          }
+          ... on ComponentSectionsFaq {
+            __typename
+            id
+            title
+            upArrow {
+              url
+              name
+            }
+            downArrow {
+              url
+              name
+            }
+            faqList {
+              features {
+                id
+                arrow {
+                  url
+                  name
+                }
+                title
+                description
+              }
+            }
+          }
+          ... on ComponentSectionsProductComingHero {
+            id
+            logo {
+              url
+              name
+            }
+            description
+            button {
+              id
+              text
+              url
+              type
+              newTab
             }
           }
         }
@@ -3588,7 +3777,7 @@ export default {
             args: []
           },
           {
-            name: "blog_content_block",
+            name: "blog_content",
             type: {
               kind: "SCALAR",
               name: "Any"
@@ -4667,6 +4856,15 @@ export default {
         name: "ComponentElementsFeatureColumn",
         fields: [
           {
+            name: "arrow",
+            type: {
+              kind: "OBJECT",
+              name: "UploadFile",
+              ofType: null
+            },
+            args: []
+          },
+          {
             name: "description",
             type: {
               kind: "SCALAR",
@@ -4688,11 +4886,8 @@ export default {
           {
             name: "title",
             type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
-              }
+              kind: "SCALAR",
+              name: "Any"
             },
             args: []
           }
@@ -6603,12 +6798,9 @@ export default {
           {
             name: "logo",
             type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "OBJECT",
-                name: "UploadFile",
-                ofType: null
-              }
+              kind: "OBJECT",
+              name: "UploadFile",
+              ofType: null
             },
             args: []
           }
@@ -6633,76 +6825,11 @@ export default {
           {
             name: "image",
             type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "LIST",
-                ofType: {
-                  kind: "OBJECT",
-                  name: "UploadFile",
-                  ofType: null
-                }
-              }
-            },
-            args: [
-              {
-                name: "filters",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "pagination",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "sort",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            name: "image_connection",
-            type: {
               kind: "OBJECT",
-              name: "UploadFileRelationResponseCollection",
+              name: "UploadFile",
               ofType: null
             },
-            args: [
-              {
-                name: "filters",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "pagination",
-                type: {
-                  kind: "SCALAR",
-                  name: "Any"
-                }
-              },
-              {
-                name: "sort",
-                type: {
-                  kind: "LIST",
-                  ofType: {
-                    kind: "SCALAR",
-                    name: "Any"
-                  }
-                }
-              }
-            ]
+            args: []
           },
           {
             name: "worksFeature",
@@ -6743,11 +6870,8 @@ export default {
           {
             name: "title",
             type: {
-              kind: "NON_NULL",
-              ofType: {
-                kind: "SCALAR",
-                name: "Any"
-              }
+              kind: "SCALAR",
+              name: "Any"
             },
             args: []
           }
