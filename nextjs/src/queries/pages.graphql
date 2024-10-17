@@ -136,7 +136,6 @@ query StrapiPageData($slug: String!) {
             }
           }
         }
-<<<<<<< HEAD
         ... on ComponentSectionsHeroProductPage {
           id
           logo {
@@ -212,7 +211,8 @@ query StrapiPageData($slug: String!) {
             url
             type
             newTab
-=======
+          }
+        }
         ... on ComponentSectionsAboutUs {
           id
           title
@@ -234,7 +234,6 @@ query StrapiPageData($slug: String!) {
             icon {
               url
             }
->>>>>>> a084024 (feat: Add About, Blogs, Case Studies pages)
           }
         }
       }

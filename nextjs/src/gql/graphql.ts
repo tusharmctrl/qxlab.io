@@ -3213,7 +3213,6 @@ export const StrapiPageDataDocument = gql`
               }
             }
           }
-<<<<<<< HEAD
           ... on ComponentSectionsHeroProductPage {
             id
             logo {
@@ -3289,7 +3288,8 @@ export const StrapiPageDataDocument = gql`
               url
               type
               newTab
-=======
+            }
+          }
           ... on ComponentSectionsAboutUs {
             id
             title
@@ -3311,7 +3311,6 @@ export const StrapiPageDataDocument = gql`
               icon {
                 url
               }
->>>>>>> a084024 (feat: Add About, Blogs, Case Studies pages)
             }
           }
         }
@@ -3515,7 +3514,6 @@ export const StrapiPageData = gql`
               }
             }
           }
-<<<<<<< HEAD
           ... on ComponentSectionsHeroProductPage {
             id
             logo {
@@ -3591,7 +3589,8 @@ export const StrapiPageData = gql`
               url
               type
               newTab
-=======
+            }
+          }
           ... on ComponentSectionsAboutUs {
             id
             title
@@ -3613,7 +3612,6 @@ export const StrapiPageData = gql`
               icon {
                 url
               }
->>>>>>> a084024 (feat: Add About, Blogs, Case Studies pages)
             }
           }
         }
