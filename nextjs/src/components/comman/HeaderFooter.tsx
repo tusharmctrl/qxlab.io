@@ -51,7 +51,7 @@ export const HeaderFooter = ({ children }: LayoutProps) => {
                               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-transparent`}> {link?.text ?? ""}</NavigationMenuLink>
                             </Link>
                           ) : (
-                            <NavigationMenuItem>
+                            <div>
                               <NavigationMenuTrigger className="bg-transparent text-white">{link?.text ?? ""}</NavigationMenuTrigger>
                               <NavigationMenuContent className="border-none">
                                 <ul className="grid w-[400px] gap-3 bg-dark-slate-gray p-4 text-white md:w-[200px] md:grid-cols-1 lg:w-[300px]">
@@ -62,7 +62,7 @@ export const HeaderFooter = ({ children }: LayoutProps) => {
                                   ))}
                                 </ul>
                               </NavigationMenuContent>
-                            </NavigationMenuItem>
+                            </div>
                           )}
                         </NavigationMenuItem>
                       ))}

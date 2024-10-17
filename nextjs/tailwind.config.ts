@@ -147,7 +147,29 @@ export default {
         card: "0 2px 4px rgba(149,146,157,.15)",
         "card-hover": "0 5px 14px rgba(149,146,157,.15)"
       },
-      "blog-pattern": "url('./images/blog-detail.png')"
+      "blog-pattern": "url('./images/blog-detail.png')",
+      keyframes: {
+        marquee: {
+          from: {
+            transform: "translateX(0)"
+          },
+          to: {
+            transform: "translateX(calc(-100% - var(--gap)))"
+          }
+        },
+        "marquee-vertical": {
+          from: {
+            transform: "translateY(0)"
+          },
+          to: {
+            transform: "translateY(calc(-100% - var(--gap)))"
+          }
+        }
+      },
+      animation: {
+        marquee: "marquee var(--duration) infinite linear",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+      }
     },
     backgroundImage: {
       "hero-pattern": "url('/images/man-qx-bg.png')"

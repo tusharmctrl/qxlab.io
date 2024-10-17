@@ -1,4 +1,27 @@
 import React from "react";
+import Marquee from "../ui/marquee";
+import { MarqueeLogos } from "../comman/MarqueeLogos";
+
+const logos = [
+  {
+    img: "/images/fosh-tech.png"
+  },
+  {
+    img: "/images/dazn.png"
+  },
+  {
+    img: "/images/betfair.png"
+  },
+  {
+    img: "/images/igt.png"
+  },
+  {
+    img: "/images/playtech.png"
+  },
+  {
+    img: "/images/markor.png"
+  }
+];
 
 export default function HeroSection(data: any) {
   return (
@@ -25,6 +48,11 @@ export default function HeroSection(data: any) {
           </div>
         </div>
       </div>
+      <Marquee pauseOnHover className="container py-10 [--duration:20s]">
+        {logos.map((logo, index) => (
+          <MarqueeLogos key={index} {...logo} />
+        ))}
+      </Marquee>
     </section>
   );
 }
