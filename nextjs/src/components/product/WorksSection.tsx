@@ -2,7 +2,7 @@ import { env } from "@/env.mjs";
 import Image from "next/image";
 import React from "react";
 
-export default function WorksSection(data) {
+export default function WorksSection(data: any) {
   return (
     <div className="relative p-5">
       <div className="container">
@@ -11,7 +11,7 @@ export default function WorksSection(data) {
       <div className="container mt-4 rounded-3xl border-0.5px border-black/30 p-6 md:p-8 xl:p-12">
         <div className="flex flex-wrap items-center gap-y-12 md:gap-y-20">
           <div className="order-2 w-full space-y-10 xl:order-1 xl:w-2/5">
-            {data?.howItWorks?.worksFeature?.features.map((data, index) => (
+            {data?.howItWorks?.worksFeature?.features.map((data: any, index: number) => (
               <div className="mr-auto flex items-start gap-8 xl:max-w-80">
                 <div className="gradient-style flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full font-semibold text-cultured">
                   {index + 1}

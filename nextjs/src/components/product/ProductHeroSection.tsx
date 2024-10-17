@@ -2,10 +2,10 @@ import React from "react";
 import Qxi from "@/../public/images/qxi.svg";
 import Image from "next/image";
 import { env } from "@/env.mjs";
-export default function ProductHeroSection(data) {
-  const renderContent = (description) => {
+export default function ProductHeroSection(data: any) {
+  const renderContent = (description: any) => {
     const sections = description.split("\n");
-    return sections.map((section, index) => {
+    return sections.map((section: any, index: any) => {
       return (
         <p key={index} className="text-base font-medium leading-2em text-cultured">
           {section.trim()}

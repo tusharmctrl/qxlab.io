@@ -2,9 +2,9 @@ import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 
-export default function FAQSection(data) {
+export default function FAQSection(data: any) {
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: any) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
   return (
@@ -14,7 +14,7 @@ export default function FAQSection(data) {
       </div>
       <div className="mx-auto mt-4 max-w-612px">
         <div className="relative">
-          {data?.faqList?.features.map((data, index) => (
+          {data?.faqList?.features.map((data: any, index: number) => (
             <>
               <div key={index}>
                 <div className="flex cursor-pointer items-center justify-between py-3.5" onClick={() => toggleFAQ(index)}>

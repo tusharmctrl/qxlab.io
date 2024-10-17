@@ -29,7 +29,7 @@ export default function page() {
               </p>
             </div>
             <div className="!mt-8 text-center">
-              <button className="hover:bg-violets-blue scale-100 rounded-xl bg-pastel-green px-4 py-3 text-sm font-semibold text-cultured transition-all duration-300 hover:scale-110 md:px-8 md:py-5 md:text-lg">
+              <button className="scale-100 rounded-xl bg-pastel-green px-4 py-3 text-sm font-semibold text-cultured transition-all duration-300 hover:scale-110 hover:bg-violets-blue md:px-8 md:py-5 md:text-lg">
                 Our Services
               </button>
             </div>
@@ -244,18 +244,18 @@ export default function page() {
       <div className="relative p-5">
         <div className="container space-y-10 pb-10 pt-10 md:pb-44 md:pt-16 xl:pb-52 xl:pt-20">
           <div className="space-y-5 md:space-y-7">
-            <h2 className="xl:text-56px space-y-3 text-center text-2xl font-semibold text-white md:space-y-6 md:text-4xl">
+            <h2 className="space-y-3 text-center text-2xl font-semibold text-white md:space-y-6 md:text-4xl xl:text-56px">
               <span className="block">Have a project in mind?</span>
               <span className="gradient-colors block">Let’s connect.</span>
             </h2>
             <div className="!mt-5 text-center md:!mt-8">
-              <button className="hover:bg-violets-blue scale-100 rounded-xl bg-pastel-green px-4 py-3 text-sm font-semibold text-cultured transition-all duration-300 hover:scale-110 md:px-8 md:py-4 md:text-lg">
+              <button className="scale-100 rounded-xl bg-pastel-green px-4 py-3 text-sm font-semibold text-cultured transition-all duration-300 hover:scale-110 hover:bg-violets-blue md:px-8 md:py-4 md:text-lg">
                 Contact Us
               </button>
             </div>
           </div>
           {/* right-80 bottom-16 */}
-          <div className="md:bottom-12% lg:right-2% xl:right-8% min-[1600px]:right-16% relative md:absolute md:right-0">
+          <div className="relative md:absolute md:bottom-12% md:right-0 lg:right-2% xl:right-8% min-[1600px]:right-16%">
             <img src={Projectmind.src} className="w-96 lg:w-432px" alt="projectmind" />
           </div>
         </div>

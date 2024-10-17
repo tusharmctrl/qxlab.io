@@ -18,7 +18,7 @@ export default function page() {
         <div className="container z-10">
           <div className="flex">
             <div className="max-w-2xl space-y-5 md:space-y-8">
-              <h1 className="leading-1.4em text-5xl font-semibold text-white md:text-6xl md:leading-1.08em lg:text-8xl">
+              <h1 className="text-5xl font-semibold leading-1.4em text-white md:text-6xl md:leading-1.08em lg:text-8xl">
                 Generate your QXi Score <span className="text-waterspout">Today</span>
               </h1>
               <div className="max-w-md">

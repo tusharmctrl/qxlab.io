@@ -42,7 +42,7 @@ export default function page() {
               </div>
             </div>
             <div className="relative">
-              <div className="blur-75px w-300px h-300px md:w-400px md:h-400px animation-svgs pointer-events-none absolute -top-10 right-20 isolate z-0 opacity-35">
+              <div className="animation-svgs pointer-events-none absolute -top-10 right-20 isolate z-0 h-300px w-300px opacity-35 blur-75px md:h-400px md:w-400px">
                 <svg
                   className="h-full w-full"
                   width="65"

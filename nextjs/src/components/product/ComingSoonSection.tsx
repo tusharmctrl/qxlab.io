@@ -2,7 +2,7 @@ import { env } from "@/env.mjs";
 import Image from "next/image";
 import React from "react";
 
-export default function ComingSoonSection(data) {
+export default function ComingSoonSection(data: any) {
   return (
     <div className="relative bg-dark-slate-gray p-5 py-20 md:py-40">
       <div className="container">
