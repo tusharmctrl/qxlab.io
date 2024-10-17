@@ -1,31 +1,7 @@
 import React from "react";
-import Marquee from "../ui/marquee";
-import { MarqueeLogos } from "../comman/MarqueeLogos";
 import { CoolMode } from "../ui/cool-mode";
 import { Button } from "../ui/button";
 import BlurFade from "../ui/blur-fade";
-import HyperText from "../ui/hyper-text";
-
-const logos = [
-  {
-    img: "/images/fosh-tech.png"
-  },
-  {
-    img: "/images/dazn.png"
-  },
-  {
-    img: "/images/betfair.png"
-  },
-  {
-    img: "/images/igt.png"
-  },
-  {
-    img: "/images/playtech.png"
-  },
-  {
-    img: "/images/markor.png"
-  }
-];
 
 export default function HeroSection(data: any) {
   return (
@@ -62,11 +38,6 @@ export default function HeroSection(data: any) {
           </div>
         </div>
       </div>
-      <Marquee pauseOnHover className="container pt-10 [--duration:20s]">
-        {logos.map((logo, index) => (
-          <MarqueeLogos key={index} {...logo} />
-        ))}
-      </Marquee>
     </section>
   );
 }

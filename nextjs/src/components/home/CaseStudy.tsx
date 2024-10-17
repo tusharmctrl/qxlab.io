@@ -1,6 +1,29 @@
 import { env } from "@/env.mjs";
 import Image from "next/image";
 import React from "react";
+import Marquee from "../ui/marquee";
+import { MarqueeLogos } from "../comman/MarqueeLogos";
+
+const logos = [
+  {
+    img: "/images/fosh-tech.png"
+  },
+  {
+    img: "/images/dazn.png"
+  },
+  {
+    img: "/images/betfair.png"
+  },
+  {
+    img: "/images/igt.png"
+  },
+  {
+    img: "/images/playtech.png"
+  },
+  {
+    img: "/images/markor.png"
+  }
+];
 
 export default function CaseStudy(data: any) {
   return (
@@ -69,6 +92,11 @@ export default function CaseStudy(data: any) {
           </div>
         </div>
       </div>
+      <Marquee pauseOnHover className="container pt-10 [--duration:20s]">
+        {logos.map((logo, index) => (
+          <MarqueeLogos key={index} {...logo} />
+        ))}
+      </Marquee>
     </section>
   );
 }
